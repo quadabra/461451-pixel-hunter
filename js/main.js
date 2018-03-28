@@ -14,14 +14,14 @@ function screenRender(block, template) {
 screenRender(main, screens[start].content);
 
 function screenSwitch(evt, block, templates) {
-    if (evt.keyCode === 39 && evt.altKey && page < templates.length) {
-      page++;
-      screenRender(block, templates[page].content);
-    }
-    if (evt.keyCode === 37 && evt.altKey && page > 0) {
-      page--;
-      screenRender(block, templates[page].content);
-    }
+  if (evt.keyCode === 39 && evt.altKey && page < templates.length) {
+    page++;
+    screenRender(block, templates[page].content);
+  }
+  if (evt.keyCode === 37 && evt.altKey && page > 0) {
+    page--;
+    screenRender(block, templates[page].content);
+  }
 }
 
 document.addEventListener('keydown', function (evt) {
