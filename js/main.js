@@ -8,9 +8,7 @@ function screenRender(block, template) {
   while (block.firstChild) {
     block.removeChild(block.firstChild);
   }
-  let fragment = document.createDocumentFragment();
-  fragment.appendChild(template.cloneNode(true));
-  block.appendChild(fragment);
+  block.appendChild(template.cloneNode(true));
 }
 
 function screenSwitch(evt, block, templates) {
