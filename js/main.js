@@ -1,6 +1,6 @@
-'use strict';
-const screens = document.querySelectorAll('template');
-const main = document.querySelector('.central');
+
+const screens = document.querySelectorAll(`template`);
+const main = document.querySelector(`.central`);
 const start = 0;
 let page = start;
 
@@ -24,6 +24,6 @@ function screenSwitch(evt, block, templates) {
   }
 }
 
-document.addEventListener('keydown', function (evt) {
+document.addEventListener(`keydown`, function (evt) {
   screenSwitch(evt, main, screens);
 });
