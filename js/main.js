@@ -11,6 +11,8 @@ function screenRender(block, template) {
   block.appendChild(template.cloneNode(true));
 }
 
+screenRender(main, screens[start].content);
+
 function screenSwitch(evt, block, templates) {
     if (evt.keyCode === 39 && evt.altKey && page < templates.length) {
       page++;
