@@ -4,26 +4,24 @@ const main = document.querySelector('.central');
 const start = 0;
 let page = start;
 
-
 function screenRender(block, template) {
   while (block.firstChild) {
     block.removeChild(block.firstChild);
   }
-  block.insertBefore(template, block.firstChild);
+  let fragment = document.createDocumentFragment();
+  fragment.appendChild(template.cloneNode(true));
+  block.appendChild(fragment);
 }
 
 function screenSwitch(evt, block, templates) {
-  if (evt.altKey) {
-    if (evt.keyCode === 39 && page < templates.length) {
-      screenRender(block, templates[page].content);
+    if (evt.keyCode === 39 && evt.altKey && page < templates.length) {
       page++;
-    }
-    if (evt.keyCode === 37 && page > 0) {
       screenRender(block, templates[page].content);
-      page--;
     }
-    console.log(page);
-  }
+    if (evt.keyCode === 37 && evt.altKey && page > 0) {
+      page--;
+      screenRender(block, templates[page].content);
+    }
 }
 
 document.addEventListener('keydown', function (evt) {
