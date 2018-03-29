@@ -1,5 +1,12 @@
 
-const screens = document.querySelectorAll(`template`);
+const screens = [
+  document.querySelector('#greeting'),
+  document.querySelector('#rules'),
+  document.querySelector('#game-1'),
+  document.querySelector('#game-2'),
+  document.querySelector('#game-3'),
+  document.querySelector('#stats')
+];
 const main = document.querySelector(`.central`);
 const start = 0;
 let page = start;
@@ -14,7 +21,7 @@ function screenRender(block, template) {
 screenRender(main, screens[start].content);
 
 function screenSwitch(evt, block, templates) {
-  if (evt.keyCode === 39 && evt.altKey && page < templates.length) {
+  if (evt.keyCode === 39 && evt.altKey && page < templates.length - 1) {
     page++;
     screenRender(block, templates[page].content);
   }
