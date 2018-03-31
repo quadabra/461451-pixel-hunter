@@ -1,5 +1,5 @@
 function createTemplateElement(element) {
-  let fragment = document.createElement('div');
+  let fragment = document.createElement(`div`);
   fragment.innerHTML = element;
   return fragment;
 }
