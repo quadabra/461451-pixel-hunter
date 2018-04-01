@@ -1,8 +1,4 @@
-function createTemplateElement(element) {
-  let fragment = document.createElement(`div`);
-  fragment.innerHTML = element;
-  return fragment;
-}
+import {createTemplateElement} from '../js/module.template.js';
 
 const rulesTemplate = createTemplateElement(`  
   <header class="header">

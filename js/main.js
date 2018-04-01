@@ -1,16 +1,15 @@
-import introPage from '../js/module.intro.js';
-import greetingPage from '../js/module.greeting.js';
-import rulesPage from '../js/module.rules.js';
-import game1Page from '../js/module.game_1.js';
+import {renderTemplateElement} from "../js/module.render";
+import intro from '../js/module.intro.js';
+import greeting from '../js/module.greeting.js';
+import rules from '../js/module.rules.js';
+import game_1 from '../js/module.game_1.js';
+import game_2 from '../js/module.game_2.js';
+import game_3 from '../js/module.game_3.js';
+import stats from '../js/module.stats';
 
 const main = document.querySelector(`.central`);
+let screen = intro;
 
-function screenRender(block, template) {
-  while (block.firstChild) {
-    block.removeChild(block.firstChild);
-  }
-  block.appendChild(template.cloneNode(true));
-}
+renderTemplateElement(main, screen);
 
-screenRender(main, game1Page);
 

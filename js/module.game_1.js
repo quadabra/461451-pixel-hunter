@@ -1,8 +1,5 @@
-function createTemplateElement(element) {
-  let fragment = document.createElement(`div`);
-  fragment.innerHTML = element;
-  return fragment;
-}
+import {createTemplateElement} from '../js/module.template.js';
+
 const game1Template = createTemplateElement(`
   <header class="header">
     <div class="header__back">
