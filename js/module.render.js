@@ -1,4 +1,4 @@
-function renderTemplateElement(block, template) {
+function renderTemplateElement(block, template,) {
   while (block.firstChild) {
     block.removeChild(block.firstChild);
   }

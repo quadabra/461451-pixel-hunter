@@ -19,4 +19,12 @@ const introTemplate = createTemplateElement(`
   </footer>
 `);
 
-export default introTemplate;
+function introCtrl(goNext) {
+  const keyElement = document.querySelector(`.intro__asterisk`);
+  keyElement.addEventListener('click', function (evt) {
+    evt.preventDefault();
+    goNext();
+  })
+}
+export {introTemplate, introCtrl};
+

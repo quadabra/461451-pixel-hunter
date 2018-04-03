@@ -37,4 +37,12 @@ const rulesTemplate = createTemplateElement(`
   </footer>
 `);
 
-export default rulesTemplate;
+function rulesCtrl(goNext) {
+  const keyElement = document.querySelector(`.continue`);
+  keyElement.addEventListener('click', function (evt) {
+    evt.preventDefault();
+    goNext();
+  })
+}
+
+export {rulesTemplate, rulesCtrl};

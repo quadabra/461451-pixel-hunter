@@ -26,4 +26,12 @@ const greetingTemplate = createTemplateElement(`
   </footer>
 `);
 
-export default greetingTemplate;
+function greetingCtrl(goNext) {
+  const keyElement = document.querySelector(`.greeting__continue`);
+  keyElement.addEventListener('click', function (evt) {
+    evt.preventDefault();
+    goNext();
+  })
+}
+
+export {greetingTemplate, greetingCtrl};
