@@ -55,4 +55,14 @@ const game3Template = createTemplateElement(`
   </footer>
 `);
 
-export default game3Template;
+function game3Ctrl(goNext) {
+  const keyElements = document.querySelectorAll(`.game__option`);
+  [].forEach.call(keyElements, function (it) {
+    it.addEventListener(`click`, function (evt) {
+      evt.preventDefault();
+      goNext();
+    });
+  });
+}
+
+export {game3Template, game3Ctrl};

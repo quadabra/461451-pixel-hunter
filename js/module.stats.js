@@ -121,4 +121,8 @@ const statsTemplate = createTemplateElement(`
   </footer>
 `);
 
-export default statsTemplate;
+function statsCtrl() {
+  return;
+}
+
+export {statsTemplate, statsCtrl};

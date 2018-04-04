@@ -68,4 +68,12 @@ const game1Template = createTemplateElement(`
   </footer>
 `);
 
-export default game1Template;
+function game1Ctrl(goNext) {
+  document.forms[0].addEventListener(`change`, function () {
+    if (document.forms[0].elements.question1.value && document.forms[0].elements.question2.value) {
+      goNext();
+    }
+  });
+}
+
+export {game1Template, game1Ctrl};

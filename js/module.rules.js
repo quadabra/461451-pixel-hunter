@@ -39,10 +39,19 @@ const rulesTemplate = createTemplateElement(`
 
 function rulesCtrl(goNext) {
   const keyElement = document.querySelector(`.continue`);
-  keyElement.addEventListener('click', function (evt) {
+  const input = document.querySelector(`.rules__input`);
+  input.required = true;
+  input.addEventListener(`change`, function (evt) {
+    if (evt.target.value) {
+      keyElement.disabled = false;
+    } else {
+      keyElement.disabled = true;
+    }
+  });
+  keyElement.addEventListener(`click`, function (evt) {
     evt.preventDefault();
     goNext();
-  })
+  });
 }
 
 export {rulesTemplate, rulesCtrl};
