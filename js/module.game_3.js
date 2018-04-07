@@ -56,12 +56,12 @@ const game3Template = createTemplateElement(`
 `);
 
 function game3Ctrl(goNext) {
-  const keyElements = document.querySelectorAll(`.game__option`);
-  [].forEach.call(keyElements, function (it) {
-    it.addEventListener(`click`, function (evt) {
-      evt.preventDefault();
+  const game = document.querySelector(`.game`);
+  game.addEventListener(`click`, function (evt) {
+    evt.preventDefault();
+    if (evt.target.className.includes(`game__option`)) {
       goNext();
-    });
+    } else return;
   });
 }
 
