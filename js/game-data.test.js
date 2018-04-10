@@ -83,3 +83,29 @@ describe(`results`, () => {
     assert.equal(-1, results(answersFew, lives));
   });
 });
+
+const timer = (time) => {
+  return {
+    counts: time,
+    tic() {
+      this.counts--;
+      if (this.counts <= 0) {
+        return `end`;
+      } else {
+        return this.counts;
+      }
+    }
+  };
+};
+
+describe(`timer`, () => {
+  it(`should return correct time`, () => {
+    assert.equal(5, timer(6).tic());
+  });
+  it(`should return end of timer`, () => {
+    assert.equal(`end`, timer(1).tic());
+  });
+  it(`should return end of timer`, () => {
+    assert.equal(`end`, timer(0).tic());
+  });
+});
