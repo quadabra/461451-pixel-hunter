@@ -61,7 +61,9 @@ function game3Ctrl(goNext) {
     evt.preventDefault();
     if (evt.target.className.includes(`game__option`)) {
       goNext();
-    } else return;
+    } else {
+      return;
+    }
   });
 }
 
