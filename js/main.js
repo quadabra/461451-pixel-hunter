@@ -1,40 +1,40 @@
 import {renderTemplateElement} from "../js/module.render";
-import {introCtrl, introTemplate as intro} from '../js/module.intro.js';
-import {greetingCtrl, greetingTemplate as greeting} from '../js/module.greeting.js';
-import {rulesCtrl, rulesTemplate as rules} from '../js/module.rules.js';
-import {game1Ctrl, game1Template as game1} from '../js/module.game_1.js';
-import {game2Ctrl, game2Template as game2} from '../js/module.game_2.js';
-import {game3Ctrl, game3Template as game3} from '../js/module.game_3.js';
-import {statsCtrl, statsTemplate as stats} from '../js/module.stats';
+import {introCtrl, introTemplate} from '../js/module.intro.js';
+import {greetingCtrl, greetingTemplate} from '../js/module.greeting.js';
+import {rulesCtrl, rulesTemplate} from '../js/module.rules.js';
+import {game1Ctrl, game1Template} from '../js/module.game_1.js';
+import {game2Ctrl, game2Template} from '../js/module.game_2.js';
+import {game3Ctrl, game3Template} from '../js/module.game_3.js';
+import {statsCtrl, statsTemplate} from '../js/module.stats';
 
 const main = document.querySelector(`.central`);
 const screens = [
   {
-    template: intro,
+    template: introTemplate,
     ctrl: introCtrl
   },
   {
-    template: greeting,
+    template: greetingTemplate,
     ctrl: greetingCtrl
   },
   {
-    template: rules,
+    template: rulesTemplate,
     ctrl: rulesCtrl
   },
   {
-    template: game1,
+    template: game1Template,
     ctrl: game1Ctrl
   },
   {
-    template: game2,
+    template: game2Template,
     ctrl: game2Ctrl
   },
   {
-    template: game3,
+    template: game3Template,
     ctrl: game3Ctrl
   },
   {
-    template: stats,
+    template: statsTemplate,
     ctrl: statsCtrl
   }];
 
