@@ -18,18 +18,18 @@ const headerTemplate = (state) => (`
     <h1 class="game__timer">${state.timer}</h1>
     <div class="game__lives">
     ${new Array(3 - state.lives)
-    .fill(`<img src="img/heart__empty.svg" class="game__heart" alt="Life" width="32" height="32">`)
-    .join(``)}
-    ${new Array(state.lives)
-    .fill(`<img src="img/heart__full.svg" class="game__heart" alt="Life" width="32" height="32">`)
-    .join(``)}
+      .fill(`<img src="img/heart__empty.svg" class="game__heart" alt="Life" width="32" height="32">`)
+      .join(``)}
+      ${new Array(state.lives)
+      .fill(`<img src="img/heart__full.svg" class="game__heart" alt="Life" width="32" height="32">`)
+      .join(``)}
     </div>
   </header>`
 );
 
 game1Template.appendChild(createTemplateElement(headerTemplate(data)));
 
-const game = {
+const gameData = {
   task: `Угадайте для каждого изображения фото или рисунок?`,
   images: [],
   answers: []
@@ -65,15 +65,16 @@ const mainTemplate = (game) => (`
   </div>`
 );
 
-game1Template.appendChild(createTemplateElement(mainTemplate(game)));
+game1Template.appendChild(createTemplateElement(mainTemplate(gameData)));
 
 const stats = (state) => (
   `<div class="stats">
-      <ul class="stats">
+    <ul class="stats">
       ${state.stats.map((it) => {
-        return `<li class="stats__result stats__result--${it}"></li>`}).join(``)}
-      </ul>
-    </div>`
+    return `<li class="stats__result stats__result--${it}"></li>`;
+  }).join(``)}
+    </ul>
+  </div>`
 );
 
 game1Template.appendChild(createTemplateElement(stats(data)));
