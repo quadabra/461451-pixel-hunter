@@ -32,26 +32,35 @@ game1Template.appendChild(createTemplateElement(headerTemplate(data)));
 const gameData = {
   task: `Угадайте для каждого изображения фото или рисунок?`,
   images: [`http://placehold.it/468x458`, `http://placehold.it/468x458`],
-  answers: new Set([`photo`, `paint`])
+  answers: [
+    {
+      type: `photo`,
+      text: `Фото`,
+      go() {}
+    },
+    {
+      type: `paint`,
+      text: `Рисунок`,
+      go() {}
+    }
+  ]
 };
 
 const mainTemplate = (game) => (`
   <div class="game">
     <p class="game__task">${game.task}</p>
     <form class="game__content">
-    ${game.images.map((it, index) => {
-    return `<div class="game__option">
+    ${game.images.map((it, index) =>
+    `<div class="game__option">
         <img src="${it}" alt="Option ${index + 1}" width="468" height="458">
-        <label class="game__answer game__answer--photo">
-          <input name="question${index + 1}" type="radio" value="photo">
-          <span>Фото</span>
-        </label>
-        <label class="game__answer game__answer--paint">
-          <input name="question${index + 1}" type="radio" value="paint">
-          <span>Рисунок</span>
-        </label>
-      </div>`;
-  }).join(``)}
+        ${[...game.answers].map((answer) =>
+    `<label class="game__answer game__answer--${answer.type}">
+          <input name="question${index + 1}" type="radio" value="${answer.type}">
+          <span>${answer.text}</span>
+        </label>`
+  ).join(``)}
+      </div>`
+  ).join(``)}
     </form>
   </div>`
 );
@@ -61,9 +70,9 @@ game1Template.appendChild(createTemplateElement(mainTemplate(gameData)));
 const stats = (state) => (
   `<div class="stats">
     <ul class="stats">
-      ${state.stats.map((it) => {
-    return `<li class="stats__result stats__result--${it}"></li>`;
-  }).join(``)}
+      ${state.stats.map((it) =>
+    `<li class="stats__result stats__result--${it}"></li>`
+  ).join(``)}
     </ul>
   </div>`
 );
