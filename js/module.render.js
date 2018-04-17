@@ -3,4 +3,4 @@ export default (block, template) => {
     block.removeChild(block.firstChild);
   }
   block.appendChild(template.cloneNode(true));
-}
+};

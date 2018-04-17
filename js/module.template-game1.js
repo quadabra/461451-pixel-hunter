@@ -6,11 +6,11 @@ export default (game) => (`
     `<div class="game__option">
         <img src="${it.image}" alt="Option ${index + 1}" width="468" height="458">
         ${[...it.answers].map((answer) =>
-      `<label class="game__answer game__answer--${answer.type}">
+    `<label class="game__answer game__answer--${answer.type}">
           <input name="question${index + 1}" type="radio" value="${answer.type}">
           <span>${answer.text}</span>
         </label>`
-    ).join(``)}
+  ).join(``)}
       </div>`
   ).join(``)}
     </form>
