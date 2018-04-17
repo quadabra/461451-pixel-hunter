@@ -1,4 +1,4 @@
-import {renderTemplateElement} from "../js/module.render";
+import renderTemplateElement from "../js/module.render";
 import {introCtrl, introTemplate} from '../js/module.intro.js';
 import {greetingCtrl, greetingTemplate} from '../js/module.greeting.js';
 import {rulesCtrl, rulesTemplate} from '../js/module.rules.js';
@@ -6,6 +6,7 @@ import {game1Ctrl, game1Template} from '../js/module.game_1.js';
 import {game2Ctrl, game2Template} from '../js/module.game_2.js';
 import {game3Ctrl, game3Template} from '../js/module.game_3.js';
 import {statsCtrl, statsTemplate} from '../js/module.stats';
+
 
 const main = document.querySelector(`.central`);
 const screens = [

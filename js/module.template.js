@@ -1,4 +1,4 @@
-const createTemplateElement = (element) => {
+export default (element) => {
   let fragment = document.createDocumentFragment();
   let template = document.createElement(`template`);
   template.innerHTML = element;
@@ -6,4 +6,4 @@ const createTemplateElement = (element) => {
   return fragment;
 };
 
-export {createTemplateElement};
+

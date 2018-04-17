@@ -1,4 +1,4 @@
-import {createTemplateElement} from '../js/module.template.js';
+import createTemplateElement from '../js/module.template.js';
 
 const introTemplate = createTemplateElement(`
   <div id="main" class="central__content">

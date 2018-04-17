@@ -1,4 +1,4 @@
-import {createTemplateElement} from '../js/module.template.js';
+import createTemplateElement from '../js/module.template.js';
 
 const statsTemplate = createTemplateElement(`
   <header class="header">
