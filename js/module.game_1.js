@@ -18,11 +18,11 @@ const headerTemplate = (state) => (`
     <h1 class="game__timer">${state.timer}</h1>
     <div class="game__lives">
     ${new Array(3 - state.lives)
-      .fill(`<img src="img/heart__empty.svg" class="game__heart" alt="Life" width="32" height="32">`)
-      .join(``)}
+    .fill(`<img src="img/heart__empty.svg" class="game__heart" alt="Life" width="32" height="32">`)
+    .join(``)}
       ${new Array(state.lives)
-      .fill(`<img src="img/heart__full.svg" class="game__heart" alt="Life" width="32" height="32">`)
-      .join(``)}
+    .fill(`<img src="img/heart__full.svg" class="game__heart" alt="Life" width="32" height="32">`)
+    .join(``)}
     </div>
   </header>`
 );
@@ -30,35 +30,58 @@ const headerTemplate = (state) => (`
 game1Template.appendChild(createTemplateElement(headerTemplate(data)));
 
 const gameData = {
-  task: `Угадайте для каждого изображения фото или рисунок?`,
-  images: [`http://placehold.it/468x458`, `http://placehold.it/468x458`],
-  answers: [
+  text: `Угадайте для каждого изображения фото или рисунок?`,
+  tasks: [
     {
-      type: `photo`,
-      text: `Фото`,
-      go() {}
+      image: `http://placehold.it/468x458`,
+      answers: [
+        {
+          type: `photo`,
+          text: `Фото`,
+          go() {
+          }
+        },
+        {
+          type: `paint`,
+          text: `Рисунок`,
+          go() {
+          }
+        }
+      ]
     },
     {
-      type: `paint`,
-      text: `Рисунок`,
-      go() {}
+      image: `http://placehold.it/468x458`,
+      answers: [
+        {
+          type: `photo`,
+          text: `Фото`,
+          go() {
+          }
+        },
+        {
+          type: `paint`,
+          text: `Рисунок`,
+          go() {
+          }
+        }
+      ]
     }
   ]
 };
 
 const mainTemplate = (game) => (`
   <div class="game">
-    <p class="game__task">${game.task}</p>
+    <p class="game__task">${game.text}</p>
     <form class="game__content">
-    ${game.images.map((it, index) =>
+    ${game.tasks.map((it, index) =>
     `<div class="game__option">
-        <img src="${it}" alt="Option ${index + 1}" width="468" height="458">
-        ${[...game.answers].map((answer) =>
-    `<label class="game__answer game__answer--${answer.type}">
+        <img src="${it.image}" alt="Option ${index + 1}" width="468" height="458">
+        ${[...it.answers].map((answer) =>
+      `<label class="game__answer game__answer--${answer.type}">
           <input name="question${index + 1}" type="radio" value="${answer.type}">
           <span>${answer.text}</span>
         </label>`
-  ).join(``)}
+    ).join(``)}
       </div>`
   ).join(``)}
     </form>
