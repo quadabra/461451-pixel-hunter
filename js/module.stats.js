@@ -4,7 +4,6 @@ import headerTemplate from './module.template-header';
 import statsBar from './module.template-statsbar';
 import footer from './modutle.template-footer';
 import gameState from './state';
-import gameData from './module.game-data';
 
 const statsTemplate = document.createDocumentFragment();
 const mainTemplate = (state) => (`

@@ -1,5 +1,5 @@
 export default {
   timer: `NN`,
-  lives: 1,
+  lives: 3,
   stats: [`wrong`, `slow`, `fast`, `correct`, `unknown`, `unknown`, `unknown`, `unknown`, `unknown`, `unknown`]
 };
