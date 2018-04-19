@@ -1,11 +1,9 @@
-import createTemplateElement from '../module.template';
 import back from './components/template.go-back';
 import lives from './components/template.lives';
 import timer from './components/template.timer';
 import statsBar from './components/template.statsbar';
 import footer from './components/template.footer';
 import gameState from '../module.game-state';
-import gameData from '../module.game-data';
 
 const game1Template = (game) => (`
   <header class="header">

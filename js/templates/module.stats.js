@@ -4,8 +4,7 @@ import statsBar from './components/template.statsbar';
 import footer from './components/template.footer';
 import gameState from '../module.game-state';
 
-const statsTemplate = document.createDocumentFragment();
-const mainTemplate = (state) => (`
+const statsTemplate = (state) => (`
   <div class="result">
     <header class="header">
     ${back()}
@@ -78,8 +77,6 @@ const mainTemplate = (state) => (`
   </div>
   ${footer()}
 `);
-
-statsTemplate.appendChild(createTemplateElement(mainTemplate(gameState)));
 
 function statsCtrl(goNext) {
   return goNext;

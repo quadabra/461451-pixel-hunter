@@ -1,15 +1,11 @@
-import createTemplateElement from '../module.template';
 import back from './components/template.go-back';
 import lives from './components/template.lives';
 import timer from './components/template.timer';
 import statsBar from './components/template.statsbar';
 import footer from './components/template.footer';
 import gameState from '../module.game-state';
-import gameData from '../module.game-data';
 
-const game2Template = document.createDocumentFragment();
-
-const mainTemplate = (game) => (`
+const game2Template = (game) => (`
   <header class="header">
     ${back()}
     ${timer(gameState)}
@@ -33,8 +29,6 @@ const mainTemplate = (game) => (`
     ${statsBar(gameState)}
     ${footer()}
 `);
-
-game2Template.appendChild(createTemplateElement(mainTemplate(gameData[`game-2`])));
 
 function game2Ctrl(goNext) {
   document.forms[0].addEventListener(`change`, function () {

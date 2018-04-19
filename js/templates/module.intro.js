@@ -4,7 +4,7 @@ const introTemplate = (game) => (`
   <div id="main" class="central__content">
     <div id="intro" class="intro">
       <h1 class="intro__asterisk">*</h1>
-      <p class="intro__motto">${game.introData.text}</p>
+      <p class="intro__motto">${game.text}</p>
     </div>
   </div>
   ${footer()}

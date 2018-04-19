@@ -12,40 +12,68 @@ import gameState from './module.game-state';
 
 const screens = [
   {
-    template: introTemplate,
+    template: introTemplate(gameData.introData),
     ctrl: introCtrl
   },
   {
-    template: greetingTemplate,
+    template: greetingTemplate(gameData.greetingData),
     ctrl: greetingCtrl
   },
   {
-    template: rulesTemplate,
+    template: rulesTemplate(gameData.rulesData),
     ctrl: rulesCtrl
   },
   {
-    template: game1Template,
+    template: game1Template(gameData.gameScreensData[0]),
     ctrl: game1Ctrl
   },
   {
-    template: game2Template,
+    template: game2Template(gameData.gameScreensData[1]),
     ctrl: game2Ctrl
   },
   {
-    template: game3Template,
+    template: game3Template(gameData.gameScreensData[2]),
     ctrl: game3Ctrl
   },
   {
-    template: statsTemplate,
+    template: game1Template(gameData.gameScreensData[3]),
+    ctrl: game1Ctrl
+  },
+  {
+    template: game2Template(gameData.gameScreensData[4]),
+    ctrl: game2Ctrl
+  },
+  {
+    template: game3Template(gameData.gameScreensData[5]),
+    ctrl: game3Ctrl
+  },
+  {
+    template: game1Template(gameData.gameScreensData[6]),
+    ctrl: game1Ctrl
+  },
+  {
+    template: game2Template(gameData.gameScreensData[7]),
+    ctrl: game2Ctrl
+  },
+  {
+    template: game3Template(gameData.gameScreensData[8]),
+    ctrl: game3Ctrl
+  },
+  {
+    template: game1Template(gameData.gameScreensData[9]),
+    ctrl: game1Ctrl
+  },
+  {
+    template: statsTemplate(gameState),
     ctrl: statsCtrl
   }];
 
 function toNextPage(number) {
   return function () {
-    renderTemplateElement(createTemplateElement(screens[0].template(gameData)));
+    renderTemplateElement(createTemplateElement(screens[number].template));
     screens[number].ctrl(toNextPage(number + 1));
   };
 }
 
-renderTemplateElement(createTemplateElement(screens[0].template(gameData)));
+renderTemplateElement(createTemplateElement(screens[0].template));
 screens[0].ctrl(toNextPage(1));
