@@ -25,7 +25,7 @@ function rulesCtrl(goNext) {
   const keyElement = document.querySelector(`.continue`);
   const input = document.querySelector(`.rules__input`);
   input.required = true;
-  input.addEventListener(`change`, function (evt) {
+  input.addEventListener(`input`, function (evt) {
     if (evt.target.value) {
       keyElement.disabled = false;
     } else {
