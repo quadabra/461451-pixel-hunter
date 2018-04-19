@@ -7,8 +7,6 @@ import {game2Ctrl, game2Template} from './templates/module.game_2.js';
 import {game3Ctrl, game3Template} from './templates/module.game_3.js';
 import {statsCtrl, statsTemplate} from './templates/module.stats';
 
-
-const main = document.querySelector(`.central`);
 const screens = [
   {
     template: introTemplate,
@@ -41,10 +39,10 @@ const screens = [
 
 function toNextPage(number) {
   return function () {
-    renderTemplateElement(main, screens[number].template);
+    renderTemplateElement(screens[number].template);
     screens[number].ctrl(toNextPage(number + 1));
   };
 }
 
-renderTemplateElement(main, screens[0].template);
+renderTemplateElement(screens[0].template);
 screens[0].ctrl(toNextPage(1));

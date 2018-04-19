@@ -1,6 +1,7 @@
-export default (block, template) => {
-  while (block.firstChild) {
-    block.removeChild(block.firstChild);
+export default (template) => {
+  const main = document.querySelector(`.central`);
+  while (main.firstChild) {
+    main.removeChild(main.firstChild);
   }
-  block.appendChild(template.cloneNode(true));
+  main.appendChild(template.cloneNode(true));
 };

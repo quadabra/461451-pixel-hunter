@@ -1,5 +1,7 @@
 import createTemplateElement from '../module.template';
-import headerTemplate from './components/template.header';
+import back from './components/template.go-back';
+import lives from './components/template.lives';
+import timer from './components/template.timer';
 import statsBar from './components/template.statsbar';
 import footer from './components/template.footer';
 import gameState from '../module.game-state';
@@ -8,7 +10,11 @@ import gameData from '../module.game-data';
 const game1Template = document.createDocumentFragment();
 
 const mainTemplate = (game) => (`
-  ${headerTemplate(gameState)}
+  <header class="header">
+    ${back()}
+    ${timer(gameState)}
+    ${lives(gameState)}
+  </header>
   <div class="game">
     <p class="game__task">${game.text}</p>
     <form class="game__content">

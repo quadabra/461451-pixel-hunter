@@ -1,5 +1,5 @@
 import createTemplateElement from '../module.template.js';
-import headerTemplate from './components/template.header';
+import back from './components/template.go-back';
 import statsBar from './components/template.statsbar';
 import footer from './components/template.footer';
 import gameState from '../module.game-state';
@@ -7,7 +7,9 @@ import gameState from '../module.game-state';
 const statsTemplate = document.createDocumentFragment();
 const mainTemplate = (state) => (`
   <div class="result">
-  ${headerTemplate(state)}
+    <header class="header">
+    ${back()}
+    </header>
     <h1>Победа!</h1>
     <table class="result__table">
       <tr>
