@@ -1,4 +1,4 @@
-import createTemplateElement from '../js/module.template.js';
+import createTemplateElement from '../module.template.js';
 
 const rulesTemplate = createTemplateElement(`  
   <header class="header">

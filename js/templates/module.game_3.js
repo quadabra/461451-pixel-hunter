@@ -1,9 +1,9 @@
-import createTemplateElement from './module.template';
-import headerTemplate from './module.header';
-import statsBar from './module.statsbar';
-import footer from './modutle.footer';
-import gameState from './module.game-state';
-import gameData from './module.game-data';
+import createTemplateElement from '../module.template';
+import headerTemplate from './components/template.header';
+import statsBar from './components/template.statsbar';
+import footer from './components/template.footer';
+import gameState from '../module.game-state';
+import gameData from '../module.game-data';
 
 const game3Template = document.createDocumentFragment();
 

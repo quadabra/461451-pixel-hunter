@@ -1,8 +1,8 @@
-import createTemplateElement from './module.template.js';
-import headerTemplate from './module.header';
-import statsBar from './module.statsbar';
-import footer from './modutle.footer';
-import gameState from './module.game-state';
+import createTemplateElement from '../module.template.js';
+import headerTemplate from './components/template.header';
+import statsBar from './components/template.statsbar';
+import footer from './components/template.footer';
+import gameState from '../module.game-state';
 
 const statsTemplate = document.createDocumentFragment();
 const mainTemplate = (state) => (`
