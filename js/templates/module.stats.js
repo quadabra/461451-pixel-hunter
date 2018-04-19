@@ -1,8 +1,6 @@
-import createTemplateElement from '../module.template.js';
 import back from './components/template.go-back';
 import statsBar from './components/template.statsbar';
 import footer from './components/template.footer';
-import gameState from '../module.game-state';
 
 const statsTemplate = (state) => (`
   <div class="result">
