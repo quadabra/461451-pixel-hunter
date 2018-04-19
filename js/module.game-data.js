@@ -81,8 +81,10 @@ const gameData = {
   }
 };
 
+gameData.gameScreensData = [];
+
 gameData.introData = {
-  text: ``
+  text: `<sup>*</sup> Это не фото. Это рисунок маслом нидерландского художника-фотореалиста Tjalf Sparnaay.`,
 };
 
 gameData.greetingData = {
