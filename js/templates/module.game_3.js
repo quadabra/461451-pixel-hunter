@@ -12,10 +12,10 @@ const game3Template = (game) =>(`
     ${lives(gameState)}
   </header>
   <div class="game">
-    <p class="game__task">${game.task}</p>
+    <p class="game__task">${game.text}</p>
     <form class="game__content  game__content--triple">
-    ${game.images.map((it, i) => `<div class="game__option">
-        <img src="${it}" alt="Option ${i}" width="304" height="455">
+    ${game.tasks.map((it) => `<div class="game__option">
+        <img src="${it.image}" alt="${it.alt}" width="304" height="455">
       </div>`).join(``)}
     </form>
     ${statsBar(gameState)}

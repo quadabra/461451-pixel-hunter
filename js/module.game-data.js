@@ -1,368 +1,190 @@
-const gameData = {
-  game1: {
-    text: `Угадайте для каждого изображения фото или рисунок?`,
-    tasks:
-      [
-        {
-          image: `http://placehold.it/468x458`,
-          answers: [
-            {
-              type: `photo`,
-              text: `Фото`,
-              go() {
-              }
-            },
-            {
-              type: `paint`,
-              text: `Рисунок`,
-              go() {
-              }
-            }
-          ]
-        },
-        {
-          image: `http://placehold.it/468x458`,
-          answers: [
-            {
-              type: `photo`,
-              text: `Фото`,
-              go() {
-              }
-            },
-            {
-              type: `paint`,
-              text: `Рисунок`,
-              go() {
-              }
-            }
-          ]
-        }
-      ]
-  },
-  game2: {
-    text: `Угадай, фото или рисунок?`,
-    tasks: [
-      {
-        image: `http://placehold.it/705x455`,
-        answers: [
-          {
-            type: `photo`,
-            text: `Фото`,
-            go() {
-            }
-          },
-          {
-            type: `paint`,
-            text: `Рисунок`,
-            go() {
-            }
-          }
-        ]
-      }
-    ]
-  },
-  game3: {
-    task: `Найдите рисунок среди изображений`,
-    images: [`http://placehold.it/304x455`, `http://placehold.it/304x455`, `http://placehold.it/304x455`],
-    answers: [
-      {
-        type: `photo`,
-        text: `Фото`,
-        go() {
-        }
-      },
-      {
-        type: `paint`,
-        text: `Рисунок`,
-        go() {
-        }
-      }
-    ]
-  }
+const gameData = {};
+
+const gameType = {
+  TWO_IMAGES: 0,
+  ONE_IMAGE: 1,
+  FIND_IMAGE: 2
+};
+
+const answerType = {
+  WRONG: 0,
+  CORRECT: 1,
+  SLOW: 2,
+  FAST: 3,
+  UNKNOWN: 4
+};
+
+const answerPrice = {
+  CORRECT: 100,
+  FAST: 50,
+  SLOW: -50
+};
+
+const imageType = {
+  PAINT: 0,
+  PHOTO: 1
+};
+
+const gameText = {
+  [gameType.TWO_IMAGES]: `Угадайте для каждого изображения фото или рисунок?`,
+  [gameType.ONE_IMAGE]: `Угадай, фото или рисунок?`,
+  [gameType.FIND_IMAGE]: `Найдите рисунок среди изображений`
 };
 
 gameData.gameScreensData = [
   {
+    gameType: gameType.TWO_IMAGES,
     text: `Угадайте для каждого изображения фото или рисунок?`,
-    tasks:
-      [
-        {
-          image: `http://placehold.it/468x458`,
-          answers: [
-            {
-              type: `photo`,
-              text: `Фото`,
-              go() {
-              }
-            },
-            {
-              type: `paint`,
-              text: `Рисунок`,
-              go() {
-              }
-            }
-          ]
-        },
-        {
-          image: `http://placehold.it/468x458`,
-          answers: [
-            {
-              type: `photo`,
-              text: `Фото`,
-              go() {
-              }
-            },
-            {
-              type: `paint`,
-              text: `Рисунок`,
-              go() {
-              }
-            }
-          ]
-        }
-      ]
+    tasks: [{
+      image: `http://i.imgur.com/DKR1HtB.jpg`,
+      name: `question1`,
+      alt: `Option 1`,
+      type: imageType.PHOTO
+    },
+    {
+      image: `https://k32.kn3.net/5C7060EC5.jpg`,
+      name: `question2`,
+      alt: `Option 2`,
+      type: imageType.PAINT
+    }]
   },
   {
+    gameType: gameType.ONE_IMAGE,
     text: `Угадай, фото или рисунок?`,
-    tasks: [
-      {
-        image: `http://placehold.it/705x455`,
-        answers: [
-          {
-            type: `photo`,
-            text: `Фото`,
-            go() {
-            }
-          },
-          {
-            type: `paint`,
-            text: `Рисунок`,
-            go() {
-            }
-          }
-        ]
-      }
-    ]
+    tasks: [{
+      image: `https://k42.kn3.net/D2F0370D6.jpg`,
+      name: `question1`,
+      alt: `Option 1`,
+      type: imageType.PAINT
+    }]
   },
   {
-    task: `Найдите рисунок среди изображений`,
-    images: [`http://placehold.it/304x455`, `http://placehold.it/304x455`, `http://placehold.it/304x455`],
-    answers: [
+    gameType: gameType.FIND_IMAGE,
+    text: `Найдите рисунок среди изображений`,
+    tasks: [{
+      image: `http://i.imgur.com/1KegWPz.jpg`,
+      alt: `Option 1`,
+      type: imageType.PHOTO
+    },
+    {
+      image: `https://i.imgur.com/DiHM5Zb.jpg`,
+      alt: `Option 1`,
+      type: imageType.PHOTO
+    },
+    {
+      image: `https://k42.kn3.net/CF42609C8.jpg`,
+      alt: `Option 1`,
+      type: imageType.PAINT
+    }]
+  },
+  {
+    gameType: gameType.TWO_IMAGES,
+    text: `Угадайте для каждого изображения фото или рисунок?`,
+    tasks: [{
+      image: `http://i.imgur.com/DKR1HtB.jpg`,
+      name: `question1`,
+      alt: `Option 1`,
+      type: imageType.PHOTO
+    },
+    {
+      image: `https://k32.kn3.net/5C7060EC5.jpg`,
+      name: `question2`,
+      alt: `Option 2`,
+      type: imageType.PAINT
+    }]
+  },
+  {
+    gameType: gameType.ONE_IMAGE,
+    text: `Угадай, фото или рисунок?`,
+    tasks: [{
+      image: `https://k42.kn3.net/D2F0370D6.jpg`,
+      name: `question1`,
+      alt: `Option 1`,
+      type: imageType.PAINT
+    }]
+  },
+  {
+    gameType: gameType.FIND_IMAGE,
+    text: `Найдите рисунок среди изображений`,
+    tasks: [{
+      image: `http://i.imgur.com/1KegWPz.jpg`,
+      alt: `Option 1`,
+      type: imageType.PHOTO
+    },
       {
-        type: `photo`,
-        text: `Фото`,
-        go() {
-        }
+        image: `https://i.imgur.com/DiHM5Zb.jpg`,
+        alt: `Option 1`,
+        type: imageType.PHOTO
       },
       {
-        type: `paint`,
-        text: `Рисунок`,
-        go() {
-        }
-      }
-    ]
+        image: `https://k42.kn3.net/CF42609C8.jpg`,
+        alt: `Option 1`,
+        type: imageType.PAINT
+      }]
   },
   {
+    gameType: gameType.TWO_IMAGES,
     text: `Угадайте для каждого изображения фото или рисунок?`,
-    tasks:
-      [
-        {
-          image: `http://placehold.it/468x458`,
-          answers: [
-            {
-              type: `photo`,
-              text: `Фото`,
-              go() {
-              }
-            },
-            {
-              type: `paint`,
-              text: `Рисунок`,
-              go() {
-              }
-            }
-          ]
-        },
-        {
-          image: `http://placehold.it/468x458`,
-          answers: [
-            {
-              type: `photo`,
-              text: `Фото`,
-              go() {
-              }
-            },
-            {
-              type: `paint`,
-              text: `Рисунок`,
-              go() {
-              }
-            }
-          ]
-        }
-      ]
+    tasks: [{
+      image: `http://i.imgur.com/DKR1HtB.jpg`,
+      name: `question1`,
+      alt: `Option 1`,
+      type: imageType.PHOTO
+    },
+    {
+      image: `https://k32.kn3.net/5C7060EC5.jpg`,
+      name: `question2`,
+      alt: `Option 2`,
+      type: imageType.PAINT
+    }]
   },
   {
+    gameType: gameType.ONE_IMAGE,
     text: `Угадай, фото или рисунок?`,
-    tasks: [
-      {
-        image: `http://placehold.it/705x455`,
-        answers: [
-          {
-            type: `photo`,
-            text: `Фото`,
-            go() {
-            }
-          },
-          {
-            type: `paint`,
-            text: `Рисунок`,
-            go() {
-            }
-          }
-        ]
-      }
-    ]
+    tasks: [{
+      image: `https://k42.kn3.net/D2F0370D6.jpg`,
+      name: `question1`,
+      alt: `Option 1`,
+      type: imageType.PAINT
+    }]
   },
   {
-    task: `Найдите рисунок среди изображений`,
-    images: [`http://placehold.it/304x455`, `http://placehold.it/304x455`, `http://placehold.it/304x455`],
-    answers: [
+    gameType: gameType.FIND_IMAGE,
+    text: `Найдите рисунок среди изображений`,
+    tasks: [{
+      image: `http://i.imgur.com/1KegWPz.jpg`,
+      alt: `Option 1`,
+      type: imageType.PHOTO
+    },
       {
-        type: `photo`,
-        text: `Фото`,
-        go() {
-        }
+        image: `https://i.imgur.com/DiHM5Zb.jpg`,
+        alt: `Option 1`,
+        type: imageType.PHOTO
       },
       {
-        type: `paint`,
-        text: `Рисунок`,
-        go() {
-        }
-      }
-    ]
+        image: `https://k42.kn3.net/CF42609C8.jpg`,
+        alt: `Option 1`,
+        type: imageType.PAINT
+      }]
   },
   {
+    gameType: gameType.TWO_IMAGES,
     text: `Угадайте для каждого изображения фото или рисунок?`,
-    tasks:
-      [
-        {
-          image: `http://placehold.it/468x458`,
-          answers: [
-            {
-              type: `photo`,
-              text: `Фото`,
-              go() {
-              }
-            },
-            {
-              type: `paint`,
-              text: `Рисунок`,
-              go() {
-              }
-            }
-          ]
-        },
-        {
-          image: `http://placehold.it/468x458`,
-          answers: [
-            {
-              type: `photo`,
-              text: `Фото`,
-              go() {
-              }
-            },
-            {
-              type: `paint`,
-              text: `Рисунок`,
-              go() {
-              }
-            }
-          ]
-        }
-      ]
-  },
-  {
-    text: `Угадай, фото или рисунок?`,
-    tasks: [
-      {
-        image: `http://placehold.it/705x455`,
-        answers: [
-          {
-            type: `photo`,
-            text: `Фото`,
-            go() {
-            }
-          },
-          {
-            type: `paint`,
-            text: `Рисунок`,
-            go() {
-            }
-          }
-        ]
-      }
-    ]
-  },
-  {
-    task: `Найдите рисунок среди изображений`,
-    images: [`http://placehold.it/304x455`, `http://placehold.it/304x455`, `http://placehold.it/304x455`],
-    answers: [
-      {
-        type: `photo`,
-        text: `Фото`,
-        go() {
-        }
-      },
-      {
-        type: `paint`,
-        text: `Рисунок`,
-        go() {
-        }
-      }
-    ]
-  },
-  {
-    text: `Угадайте для каждого изображения фото или рисунок?`,
-    tasks:
-      [
-        {
-          image: `http://placehold.it/468x458`,
-          answers: [
-            {
-              type: `photo`,
-              text: `Фото`,
-              go() {
-              }
-            },
-            {
-              type: `paint`,
-              text: `Рисунок`,
-              go() {
-              }
-            }
-          ]
-        },
-        {
-          image: `http://placehold.it/468x458`,
-          answers: [
-            {
-              type: `photo`,
-              text: `Фото`,
-              go() {
-              }
-            },
-            {
-              type: `paint`,
-              text: `Рисунок`,
-              go() {
-              }
-            }
-          ]
-        }
-      ]
+    tasks: [{
+      image: `http://i.imgur.com/DKR1HtB.jpg`,
+      name: `question1`,
+      alt: `Option 1`,
+      type: imageType.PHOTO
+    },
+    {
+      image: `https://k32.kn3.net/5C7060EC5.jpg`,
+      name: `question2`,
+      alt: `Option 2`,
+      type: imageType.PAINT
+    }]
   }
 ];
+
 
 gameData.introData = {
   text: `<sup>*</sup> Это не фото. Это рисунок маслом нидерландского художника-фотореалиста Tjalf Sparnaay.`,

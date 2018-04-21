@@ -18,4 +18,18 @@ function introCtrl(goNext) {
   });
 }
 
+const intro = {
+  screen(game) {
+    return `
+  <div id="main" class="central__content">
+    <div id="intro" class="intro">
+      <h1 class="intro__asterisk">*</h1>
+      <p class="intro__motto">${game.text}</p>
+    </div>
+  </div>
+  ${footer()}`
+  },
+  next()
+};
+
 export {introTemplate, introCtrl};
