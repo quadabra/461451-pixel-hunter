@@ -3,11 +3,8 @@ import lives from './components/template.lives';
 import timer from './components/template.timer';
 import action from './components/template.action';
 import statsBar from './components/template.statsbar';
-import footer from './components/template.footer';
-import gameState, {mutate} from '../module.game-state';
 
-
-const game1Template = (game) => (`
+const game1Template = (game, gameState) => (`
   <header class="header">
     ${back()}
     ${timer(gameState)}
@@ -25,13 +22,11 @@ const game1Template = (game) => (`
     </form>
   </div>
   ${statsBar(gameState)}
-  ${footer()}
 `);
 
 function game1Ctrl(goNext) {
   document.forms[0].addEventListener(`change`, function () {
     if (document.forms[0].elements.question1.value && document.forms[0].elements.question2.value) {
-
       goNext();
     }
   });

@@ -1,4 +1,7 @@
-import footer from './components/template.footer';
+import createTemplateElement from '../module.create-element.js';
+import gameData from "../module.game-data";
+import renderTemplateElement from "../module.render";
+import greetingPage from "./module.greeting";
 
 const introTemplate = (game) => (`
   <div id="main" class="central__content">
@@ -7,29 +10,10 @@ const introTemplate = (game) => (`
       <p class="intro__motto">${game.text}</p>
     </div>
   </div>
-  ${footer()}
 `);
 
-function introCtrl(goNext) {
-  const keyElement = document.querySelector(`.intro__asterisk`);
-  keyElement.addEventListener(`click`, function (evt) {
-    evt.preventDefault();
-    goNext();
-  });
-}
+const introPage = createTemplateElement(introTemplate(gameData.introData));
 
-const intro = {
-  screen(game) {
-    return `
-  <div id="main" class="central__content">
-    <div id="intro" class="intro">
-      <h1 class="intro__asterisk">*</h1>
-      <p class="intro__motto">${game.text}</p>
-    </div>
-  </div>
-  ${footer()}`
-  },
-  next()
-};
+introPage.querySelector(`.intro__asterisk`).addEventListener(`click`, () => renderTemplateElement(greetingPage));
 
-export {introTemplate, introCtrl};
+export default introPage;

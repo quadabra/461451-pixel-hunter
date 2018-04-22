@@ -3,7 +3,8 @@ import gameData from './module.game-data';
 const state = {
   gameData: gameData,
   init: {
-    answers: new Array(10).fill(`unknown`),
+    gameScreen: 0,
+    answers: [],
     lives: 3
   },
   timer: `NN`,
@@ -11,18 +12,18 @@ const state = {
   stats: [`wrong`, `slow`, `fast`, `correct`, `unknown`, `unknown`, `unknown`, `unknown`, `unknown`, `unknown`],
 };
 
-const zz = {
-  TEST_MUTATION: function (state, payload) {
-    state.lives++;
-  },
-  ANSWER_TWO_IMAGES(state, payload) {
-    state.gameData.gameScreensData
-  },
+const saveAnswer = (answer) => {
+
 };
 
-function mutate(name, payload) {
-  zz[name](state, payload)
-}
+const twoImages = (answers, data, callback) => {
+  const answer = (answers[0] === data.tasks[0].type && answers[1] === data.tasks[1].type);
+  callback(answer);
+};
+const oneImage = () => {};
+const findImage = () => {};
+
+getAnswer = new Set([twoImages, oneImage, findImage]);
 
 export default state;
-export {mutate};
+export {getAnswer};

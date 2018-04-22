@@ -3,7 +3,6 @@ import lives from './components/template.lives';
 import timer from './components/template.timer';
 import action from './components/template.action';
 import statsBar from './components/template.statsbar';
-import footer from './components/template.footer';
 import gameState from '../module.game-state';
 
 const game2Template = (game) => (`
@@ -21,7 +20,6 @@ const game2Template = (game) => (`
       </div>
     </form>
     ${statsBar(gameState)}
-    ${footer()}
 `);
 
 function game2Ctrl(goNext) {

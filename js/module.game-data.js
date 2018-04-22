@@ -21,15 +21,14 @@ const answerPrice = {
 };
 
 const imageType = {
-  PAINT: 0,
-  PHOTO: 1
+  PAINT: `paint`,
+  PHOTO: `photo`
 };
 
-const gameText = {
-  [gameType.TWO_IMAGES]: `Угадайте для каждого изображения фото или рисунок?`,
-  [gameType.ONE_IMAGE]: `Угадай, фото или рисунок?`,
-  [gameType.FIND_IMAGE]: `Найдите рисунок среди изображений`
-};
+const gameText = new Set ([
+  `Угадайте для каждого изображения фото или рисунок?`,
+  `Угадай, фото или рисунок?`,
+  `Найдите рисунок среди изображений`]);
 
 gameData.gameScreensData = [
   {

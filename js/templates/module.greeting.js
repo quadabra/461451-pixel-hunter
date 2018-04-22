@@ -1,4 +1,7 @@
-import footer from './components/template.footer';
+import gameData from "../module.game-data";
+import createTemplateElement from "../module.create-element";
+import renderTemplateElement from "../module.render";
+import rulesPage from "./module.rules";
 
 const greetingTemplate = (game) => (`
 <div class="greeting central--blur">
@@ -10,15 +13,10 @@ const greetingTemplate = (game) => (`
     </div>
     <div class="greeting__continue"><span><img src="img/arrow_right.svg" width="64" height="64" alt="Next"></span></div>
   </div>
-  ${footer()}
 `);
 
-function greetingCtrl(goNext) {
-  const keyElement = document.querySelector(`.greeting__continue`);
-  keyElement.addEventListener(`click`, function (evt) {
-    evt.preventDefault();
-    goNext();
-  });
-}
+const greetingPage = createTemplateElement(greetingTemplate(gameData.greetingData));
 
-export {greetingTemplate, greetingCtrl};
+greetingPage.querySelector(`.greeting__continue`).addEventListener(`click`, () => renderTemplateElement(rulesPage));
+
+export default greetingPage

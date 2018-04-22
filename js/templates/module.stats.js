@@ -1,6 +1,5 @@
 import back from './components/template.go-back';
 import statsBar from './components/template.statsbar';
-import footer from './components/template.footer';
 
 const statsTemplate = (state) => (`
   <div class="result">
@@ -73,7 +72,6 @@ const statsTemplate = (state) => (`
       </tr>
     </table>
   </div>
-  ${footer()}
 `);
 
 function statsCtrl(goNext) {

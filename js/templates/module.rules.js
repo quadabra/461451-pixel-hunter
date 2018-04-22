@@ -1,6 +1,8 @@
-
 import back from './components/template.go-back';
-import footer from './components/template.footer';
+import createTemplateElement from "../module.create-element";
+import gameData from "../module.game-data";
+import introPage from "./module.intro";
+import renderTemplateElement from "../module.render";
 
 const rulesTemplate = (game) => (`  
   <header class="header">
@@ -14,24 +16,14 @@ const rulesTemplate = (game) => (`
       <button class="rules__button  continue" type="submit" disabled>Go!</button>
     </form>
   </div>
-  ${footer()}
 `);
 
-function rulesCtrl(goNext) {
-  const keyElement = document.querySelector(`.continue`);
-  const input = document.querySelector(`.rules__input`);
-  input.required = true;
-  input.addEventListener(`input`, function (evt) {
-    if (evt.target.value) {
-      keyElement.disabled = false;
-    } else {
-      keyElement.disabled = true;
-    }
-  });
-  keyElement.addEventListener(`click`, function (evt) {
-    evt.preventDefault();
-    goNext();
-  });
-}
+const rulesPage = createTemplateElement(rulesTemplate(gameData.rulesData));
 
-export {rulesTemplate, rulesCtrl};
+const input = rulesPage.querySelector(`.rules__input`);
+const submit = rulesPage.querySelector(`.continue`);
+
+input.addEventListener(`input`, (evt) => submit.disabled = (!evt.target.value));
+submit.addEventListener(`click`, () => renderTemplateElement(introPage));
+
+export default rulesPage;
