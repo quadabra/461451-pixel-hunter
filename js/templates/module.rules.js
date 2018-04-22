@@ -1,8 +1,8 @@
-import back from './components/template.go-back';
 import createTemplateElement from "../module.create-element";
-import gameData from "../module.game-data";
-import introPage from "./module.intro";
 import renderTemplateElement from "../module.render";
+import back from './components/template.go-back';
+import gameData from "../module.game-data";
+import gameStart from "../module.game-engine";
 
 const rulesTemplate = (game) => (`  
   <header class="header">
@@ -24,6 +24,6 @@ const input = rulesPage.querySelector(`.rules__input`);
 const submit = rulesPage.querySelector(`.continue`);
 
 input.addEventListener(`input`, (evt) => submit.disabled = (!evt.target.value));
-submit.addEventListener(`click`, () => renderTemplateElement(introPage));
+submit.addEventListener(`click`, () => gameStart());
 
 export default rulesPage;
