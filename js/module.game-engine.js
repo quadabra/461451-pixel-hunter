@@ -53,8 +53,9 @@ const screens = [
 function toNextPage(number) {
   return function () {
     if (number < screens.length) {
-      renderTemplateElement(createTemplateElement(screens[number].template, gameState));
+      renderTemplateElement(createTemplateElement(screens[number].template));
       screens[number].ctrl(toNextPage(number + 1));
+      gameState.screen++;
     } else {
       renderTemplateElement(createTemplateElement(statsTemplate(gameState)));
       statsCtrl();
@@ -65,16 +66,22 @@ function toNextPage(number) {
 const gameStart = function () {
   renderTemplateElement(createTemplateElement(screens[0].template, gameState));
   screens[0].ctrl(toNextPage(1));
+  gameState.screen = 0;
 };
 
-const saveAnswer = (answer) => {
-
+const saveAnswer = (answer, index) => {
+  if (answer === true) {
+    gameState.stats[index] = `correct`;
+  } else {
+    gameState.stats[index] = `wrong`;
+  }
 };
 
 
-const twoImages = (answers, data, callback) => {
-  const answer = (answers[0] === data.tasks[0].type && answers[1] === data.tasks[1].type);
-  callback(answer);
+const twoImages = (answers) => {
+  const answer = (answers[0] === gameData.gameScreensData[gameState.screen].tasks[0].type &&
+    answers[1] === gameData.gameScreensData[gameState.screen].tasks[1].type);
+  saveAnswer(answer);
 };
 const oneImage = () => {
 };
@@ -82,5 +89,5 @@ const findImage = () => {
 };
 
 const getAnswer = new Set([twoImages, oneImage, findImage]);
-
+export {twoImages};
 export default gameStart;
