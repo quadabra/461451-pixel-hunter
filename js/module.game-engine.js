@@ -2,11 +2,13 @@ import createTemplateElement from './module.create-element';
 import renderTemplateElement from './module.render';
 import gameData from './module.game-data';
 import gameState from "./module.game-state";
-import {game1Ctrl, game1Template} from './templates/module.game_1';
+import gameTwoImages, {game1Ctrl, game1Template} from './templates/module.game_1';
 import {statsCtrl, statsTemplate} from "./templates/module.stats";
 import {game3Ctrl, game3Template} from "./templates/module.game_3";
-import {game2Ctrl, game2Template} from "./templates/module.game_2";
+import gameOneImage, {game2Ctrl, game2Template} from "./templates/module.game_2";
 
+const gameTypes = [gameTwoImages, gameOneImage
+];
 
 const screens = [
   {
@@ -54,7 +56,7 @@ function toNextPage(number) {
   return function () {
     if (number < screens.length) {
       renderTemplateElement(createTemplateElement(screens[number].template));
-      screens[number].ctrl(toNextPage(number + 1));
+      screens[number].ctrl(toNextPage(number + 1), screens[number + 1].template);
       gameState.screen++;
     } else {
       renderTemplateElement(createTemplateElement(statsTemplate(gameState)));
@@ -65,7 +67,7 @@ function toNextPage(number) {
 
 const gameStart = function () {
   renderTemplateElement(createTemplateElement(screens[0].template, gameState));
-  screens[0].ctrl(toNextPage(1));
+  screens[0].ctrl(toNextPage(1), screens[0].template);
   gameState.screen = 0;
 };
 

@@ -110,16 +110,16 @@ gameData.gameScreensData = [
       alt: `Option 1`,
       type: imageType.PHOTO
     },
-      {
-        image: `https://i.imgur.com/DiHM5Zb.jpg`,
-        alt: `Option 1`,
-        type: imageType.PHOTO
-      },
-      {
-        image: `https://k42.kn3.net/CF42609C8.jpg`,
-        alt: `Option 1`,
-        type: imageType.PAINT
-      }]
+    {
+      image: `https://i.imgur.com/DiHM5Zb.jpg`,
+      alt: `Option 1`,
+      type: imageType.PHOTO
+    },
+    {
+      image: `https://k42.kn3.net/CF42609C8.jpg`,
+      alt: `Option 1`,
+      type: imageType.PAINT
+    }]
   },
   {
     gameType: gameType.TWO_IMAGES,
@@ -155,16 +155,16 @@ gameData.gameScreensData = [
       alt: `Option 1`,
       type: imageType.PHOTO
     },
-      {
-        image: `https://i.imgur.com/DiHM5Zb.jpg`,
-        alt: `Option 1`,
-        type: imageType.PHOTO
-      },
-      {
-        image: `https://k42.kn3.net/CF42609C8.jpg`,
-        alt: `Option 1`,
-        type: imageType.PAINT
-      }]
+    {
+      image: `https://i.imgur.com/DiHM5Zb.jpg`,
+      alt: `Option 1`,
+      type: imageType.PHOTO
+    },
+    {
+      image: `https://k42.kn3.net/CF42609C8.jpg`,
+      alt: `Option 1`,
+      type: imageType.PAINT
+    }]
   },
   {
     gameType: gameType.TWO_IMAGES,
