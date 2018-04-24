@@ -20,13 +20,13 @@ export default {
         <img src="${it.image}" alt="${it.alt}" width="304" height="455">
       </div>`).join(``)}
     </form>
-    ${statsBar(gameState)}`)
+    ${statsBar(gameState)}`);
   },
 
   gameCtrl(data, callback) {
     const game = document.querySelectorAll(`.game__option`);
     for (let i = 0; i < data.tasks.length; i++) {
-      game[i].addEventListener('click', () => {
+      game[i].addEventListener(`click`, () => {
         if (data.tasks[i].type === `paint`) {
           gameState.setStats(`correct`);
           callback();
@@ -35,7 +35,7 @@ export default {
           gameState.setLives();
           callback();
         }
-      })
+      });
     }
   }
-}
+};

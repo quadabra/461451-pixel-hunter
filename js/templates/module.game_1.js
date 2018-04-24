@@ -18,13 +18,13 @@ export default {
     <p class="game__task">${gameData.text}</p>
     <form class="game__content">
     ${gameData.tasks.map((it) =>
-      `<div class="game__option">
+    `<div class="game__option">
         <img src="${it.image}" alt="${it.alt}" width="468" height="458">
         ${action(it)}
       </div>`).join(``)}
     </form>
     ${statsBar(gameState)}
-  </div>`)
+  </div>`);
   },
 
   gameCtrl(data, callback) {
@@ -32,15 +32,15 @@ export default {
       const val0 = document.forms[0].elements.question1.value;
       const val1 = document.forms[0].elements.question2.value;
       if (val0 && val1) {
-      if (data.tasks[0].type === val0 && data.tasks[1].type === val1) {
-        gameState.setStats(`correct`);
-        callback();
-      } else {
-        gameState.setStats(`wrong`);
-        gameState.setLives();
-        callback();
+        if (data.tasks[0].type === val0 && data.tasks[1].type === val1) {
+          gameState.setStats(`correct`);
+          callback();
+        } else {
+          gameState.setStats(`wrong`);
+          gameState.setLives();
+          callback();
+        }
       }
-    }
     });
   }
-}
+};

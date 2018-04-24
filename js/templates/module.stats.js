@@ -2,7 +2,7 @@ import createTemplateElement from "../module.create-element";
 import back from './components/template.go-back';
 import statsBar from './components/template.statsbar';
 
-const statsTemplate = (state) => (`
+const template = (state) => (`
   <div class="result">
     <header class="header">
     ${back()}
@@ -78,5 +78,7 @@ const statsTemplate = (state) => (`
 function statsCtrl(goNext) {
   return goNext;
 }
+
+const statsTemplate = createTemplateElement(template());
 
 export {statsTemplate, statsCtrl};

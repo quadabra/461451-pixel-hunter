@@ -6,29 +6,29 @@ const gameType = {
   FIND_IMAGE: 2
 };
 
-const answerType = {
-  WRONG: 0,
-  CORRECT: 1,
-  SLOW: 2,
-  FAST: 3,
-  UNKNOWN: 4
-};
-
-const answerPrice = {
-  CORRECT: 100,
-  FAST: 50,
-  SLOW: -50
-};
+// const answerType = {
+//   WRONG: 0,
+//   CORRECT: 1,
+//   SLOW: 2,
+//   FAST: 3,
+//   UNKNOWN: 4
+// };
+//
+// const answerPrice = {
+//   CORRECT: 100,
+//   FAST: 50,
+//   SLOW: -50
+// };
 
 const imageType = {
   PAINT: `paint`,
   PHOTO: `photo`
 };
 
-const gameText = new Set([
-  `Угадайте для каждого изображения фото или рисунок?`,
-  `Угадай, фото или рисунок?`,
-  `Найдите рисунок среди изображений`]);
+// const gameText = new Set([
+//   `Угадайте для каждого изображения фото или рисунок?`,
+//   `Угадай, фото или рисунок?`,
+//   `Найдите рисунок среди изображений`]);
 
 gameData.gameScreensData = [
   {
