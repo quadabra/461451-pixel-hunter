@@ -1,3 +1,4 @@
+import createTemplateElement from "../module.create-element";
 import back from './components/template.go-back';
 import statsBar from './components/template.statsbar';
 

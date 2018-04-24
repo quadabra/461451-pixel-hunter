@@ -17,7 +17,7 @@ const getProperScreen = (number) => {
 
 const game = () => {
   if (currentScreen < screens.length && gameState.lives > 0) {
-    renderTemplateElement(createTemplateElement(getProperScreen(currentScreen).gameTemplate(screens[currentScreen])));
+    renderTemplateElement(getProperScreen(currentScreen).gameTemplate(screens[currentScreen]));
     getProperScreen(currentScreen).gameCtrl(screens[currentScreen], game);
     currentScreen++;
   } else {

@@ -1,3 +1,4 @@
+import createTemplateElement from '../module.create-element';
 import back from './components/template.go-back';
 import lives from './components/template.lives';
 import timer from './components/template.timer';
@@ -7,7 +8,7 @@ import gameState from '../module.game-state';
 
 export default {
   gameTemplate(gameData) {
-    return (`
+    return createTemplateElement(`
   <header class="header">
     ${back()}
     ${timer(gameState)}
