@@ -32,7 +32,7 @@ const gameText = new Set([
 
 gameData.gameScreensData = [
   {
-    gameType: 0,
+    gameType: gameType.TWO_IMAGES,
     text: `Угадайте для каждого изображения фото или рисунок?`,
     tasks: [{
       image: `http://i.imgur.com/DKR1HtB.jpg`,

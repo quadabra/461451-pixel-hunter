@@ -1,5 +1,4 @@
 import createTemplateElement from "../module.create-element";
-import renderTemplateElement from "../module.render";
 import back from './components/template.go-back';
 import gameData from "../module.game-data";
 import gameStart from "../module.game-engine";
@@ -26,6 +25,6 @@ const submit = rulesPage.querySelector(`.continue`);
 input.addEventListener(`input`, (evt) => {
   submit.disabled = (!evt.target.value);
 });
-submit.addEventListener(`click`, () => gameStart.render());
+submit.addEventListener(`click`, () => gameStart());
 
 export default rulesPage;
