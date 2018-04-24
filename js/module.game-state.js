@@ -1,25 +1,23 @@
-
 const state = {
-  init: {
-    gameScreen: 0,
-    answers: [],
-    lives: 3
-  },
-  player: {
-    gameScreen: 0,
-    answers: [],
-    lives: 3
-  },
-  screen: 0,
   timer: `NN`,
   lives: 3,
-  stats: [`wrong`, `slow`, `fast`, `correct`, `unknown`, `unknown`, `unknown`, `unknown`, `unknown`, `unknown`],
+  stats: [],
+  getStats() {
+    let answers = new Array(10);
+    for (let i = 0; i < answers.length; i++) {
+      answers[i] = (this.stats[i]) ? this.stats[i] : `unknown`;
+    }
+    return answers;
+  },
+  setStats(answer) {
+    this.stats.push(answer);
+  },
+  initLives() {
+    this.lives = 3;
+  },
+  setLives() {
+    this.lives--;
+  }
 };
 
-const answerTwoImages = (value0, value1) => {
-
-};
-
-export {answerTwoImages};
 export default state;
-

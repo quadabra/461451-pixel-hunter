@@ -19,4 +19,4 @@ const greetingPage = createTemplateElement(greetingTemplate(gameData.greetingDat
 
 greetingPage.querySelector(`.greeting__continue`).addEventListener(`click`, () => renderTemplateElement(rulesPage));
 
-export default greetingPage
+export default greetingPage;

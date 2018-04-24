@@ -25,14 +25,14 @@ const imageType = {
   PHOTO: `photo`
 };
 
-const gameText = new Set ([
+const gameText = new Set([
   `Угадайте для каждого изображения фото или рисунок?`,
   `Угадай, фото или рисунок?`,
   `Найдите рисунок среди изображений`]);
 
 gameData.gameScreensData = [
   {
-    gameType: gameType.TWO_IMAGES,
+    gameType: 0,
     text: `Угадайте для каждого изображения фото или рисунок?`,
     tasks: [{
       image: `http://i.imgur.com/DKR1HtB.jpg`,

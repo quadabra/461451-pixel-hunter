@@ -20,8 +20,8 @@ const game2Template = (game) => (`
         ${action(game.tasks[0])}
       </div>
     </form>
-  </div>
     ${statsBar(gameState)}
+  </div>
 `);
 
 function game2Ctrl(goNext) {
@@ -56,18 +56,20 @@ const gameStats = (state) => (`
   ${statsBar(state)};
 `);
 
-export default (data, state) => {
+export default (data, state, callback) => {
   const content = `\
   ${gameHeader(state)}
+  <div class="game">
   ${gameContent(data)}
-  ${gameStats(state)}`;
+  ${gameStats(state)}
+  </div>`;
 
   const gameTemplate = createTemplateElement(content);
-  const gameForm = gameTemplate.forms[0];
+  const gameForm = document.forms[0];
 
-  gameForm.addEventListener(`change`, (goNext) => {
+  gameForm.addEventListener(`change`, () => {
     if (document.forms[0].elements.question1.value) {
-      goNext();
+      callback();
     }
   });
   return gameTemplate;

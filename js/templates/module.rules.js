@@ -23,7 +23,9 @@ const rulesPage = createTemplateElement(rulesTemplate(gameData.rulesData));
 const input = rulesPage.querySelector(`.rules__input`);
 const submit = rulesPage.querySelector(`.continue`);
 
-input.addEventListener(`input`, (evt) => submit.disabled = (!evt.target.value));
-submit.addEventListener(`click`, () => gameStart());
+input.addEventListener(`input`, (evt) => {
+  submit.disabled = (!evt.target.value);
+});
+submit.addEventListener(`click`, () => gameStart.render());
 
 export default rulesPage;
