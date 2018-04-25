@@ -1,11 +1,10 @@
-import createTemplateElement from './module.create-element';
 import renderTemplateElement from './module.render';
 import gameData from './module.game-data';
 import gameState from './module.game-state';
 import gameTwoImages from './templates/module.game_1';
 import gameOneImage from './templates/module.game_2';
 import gameThreeImages from './templates/module.game_3';
-import {statsCtrl, statsTemplate} from './templates/module.stats';
+import gameStats from './templates/module.stats';
 
 const gameTypes = [gameTwoImages, gameOneImage, gameThreeImages];
 
@@ -21,8 +20,9 @@ const game = () => {
     getProperScreen(currentScreen).gameCtrl(screens[currentScreen], game);
     currentScreen++;
   } else {
-    renderTemplateElement(createTemplateElement(statsTemplate(gameState)));
-    statsCtrl();
+    gameState.getResult();
+    renderTemplateElement(gameStats.statsTemplate(gameState));
+    gameStats.statsCtrl();
   }
 };
 

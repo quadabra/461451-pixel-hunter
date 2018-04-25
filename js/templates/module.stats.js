@@ -2,12 +2,14 @@ import createTemplateElement from "../module.create-element";
 import back from './components/template.go-back';
 import statsBar from './components/template.statsbar';
 
-const template = (state) => (`
+export default {
+  statsTemplate(state) {
+    return createTemplateElement(`
   <div class="result">
     <header class="header">
     ${back()}
     </header>
-    <h1>Победа!</h1>
+    <h1>${state.result.text}</h1>
     <table class="result__table">
       <tr>
         <td class="result__number">1.</td>
@@ -15,70 +17,36 @@ const template = (state) => (`
           ${statsBar(state)}
         </td>
         <td class="result__points">×&nbsp;100</td>
-        <td class="result__total">900</td>
+        <td class="result__total">${state.result.answerPoints}</td>
       </tr>
       <tr>
         <td></td>
         <td class="result__extra">Бонус за скорость:</td>
-        <td class="result__extra">1&nbsp;<span class="stats__result stats__result--fast"></span></td>
+        <td class="result__extra">0&nbsp;<span class="stats__result stats__result--fast"></span></td>
         <td class="result__points">×&nbsp;50</td>
-        <td class="result__total">50</td>
+        <td class="result__total">${state.result.speedPoints}</td>
       </tr>
       <tr>
         <td></td>
         <td class="result__extra">Бонус за жизни:</td>
-        <td class="result__extra">2&nbsp;<span class="stats__result stats__result--alive"></span></td>
+        <td class="result__extra">${state.lives}&nbsp;<span class="stats__result stats__result--alive"></span></td>
         <td class="result__points">×&nbsp;50</td>
-        <td class="result__total">100</td>
+        <td class="result__total">${state.result.livesPoints}</td>
       </tr>
       <tr>
         <td></td>
         <td class="result__extra">Штраф за медлительность:</td>
-        <td class="result__extra">2&nbsp;<span class="stats__result stats__result--slow"></span></td>
+        <td class="result__extra">0&nbsp;<span class="stats__result stats__result--slow"></span></td>
         <td class="result__points">×&nbsp;50</td>
-        <td class="result__total">-100</td>
+        <td class="result__total">${state.result.slowPoints}</td>
       </tr>
       <tr>
-        <td colspan="5" class="result__total  result__total--final">950</td>
+        <td colspan="5" class="result__total  result__total--final">${state.result.totalPoints}</td>
       </tr>
     </table>
-    <table class="result__table">
-      <tr>
-        <td class="result__number">2.</td>
-        <td>
-          ${statsBar(state)}
-        </td>
-        <td class="result__total"></td>
-        <td class="result__total  result__total--final">fail</td>
-      </tr>
-    </table>
-    <table class="result__table">
-      <tr>
-        <td class="result__number">3.</td>
-        <td colspan="2">
-          ${statsBar(state)}
-        </td>
-        <td class="result__points">×&nbsp;100</td>
-        <td class="result__total">900</td>
-      </tr>
-      <tr>
-        <td></td>
-        <td class="result__extra">Бонус за жизни:</td>
-        <td class="result__extra">2&nbsp;<span class="stats__result stats__result--alive"></span></td>
-        <td class="result__points">×&nbsp;50</td>
-        <td class="result__total">100</td>
-      </tr>
-      <tr>
-        <td colspan="5" class="result__total  result__total--final">950</td>
-      </tr>
-    </table>
-  </div>
-`);
-
-function statsCtrl(goNext) {
-  return goNext;
-}
-
-const statsTemplate = createTemplateElement(template());
-
-export {statsTemplate, statsCtrl};
+  </div>`);
+  },
+  statsCtrl(callback) {
+    return callback;
+  }
+};
