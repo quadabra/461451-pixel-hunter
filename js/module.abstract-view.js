@@ -2,12 +2,11 @@ export default class AbstractView {
   constructor(data, callback) {
     this.data = data;
     this.callback = callback;
-    this.elements = null;
+    this.actionElements = null;
   }
   get element() {
     if (!this._markup) {
-      let fragment = document.createElement(`div`);
-      fragment.innerHTML = this.getMarkup();
+      let fragment = this.render();
       this._markup = document.createDocumentFragment();
       while (fragment.childNodes.length) {
         this._markup.appendChild(fragment.childNodes[0]);
@@ -21,21 +20,21 @@ export default class AbstractView {
   }
 
   render() {
-
+    let container = document.createElement(`div`);
+    container.innerHTML = this.template();
+    return container
   }
 
-  getMarkup() {
-  }
   bind() {
-    if (this.elements) {
-      for (let element of this.elements) {
+    if (this.actionElements) {
+      for (let element of this.actionElements) {
         element.addEventListener(`click`, this.callback);
       }
     }
   }
   clear() {
-    if (this.elements) {
-      for (let element of this.elements) {
+    if (this.actionElements) {
+      for (let element of this.actionElements) {
         element.removeEventListener(`click`, this.callback);
       }
     }
