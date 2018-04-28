@@ -1,4 +1,5 @@
 const state = {
+  current: 0,
   timer: `NN`,
   lives: 3,
   stats: [],

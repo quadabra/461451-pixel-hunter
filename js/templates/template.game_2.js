@@ -1,9 +1,9 @@
 import createTemplateElement from '../module.create-element';
-import back from './components/template.go-back';
-import lives from './components/template.lives';
-import timer from './components/template.timer';
-import action from './components/template.action';
-import statsBar from './components/template.statsbar';
+import back from './components/component.go-back';
+import lives from './components/component.lives';
+import timer from './components/component.timer';
+import action from './components/component.action';
+import statsBar from './components/component.statsbar';
 import gameState from '../module.game-state';
 
 export default {

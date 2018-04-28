@@ -1,10 +1,11 @@
 import createTemplateElement from '../module.create-element';
-import back from './components/template.go-back';
-import lives from './components/template.lives';
-import timer from './components/template.timer';
-import action from './components/template.action';
-import statsBar from './components/template.statsbar';
+import back from './components/component.go-back';
+import lives from './components/component.lives';
+import timer from './components/component.timer';
+import action from './components/component.action';
+import statsBar from './components/component.statsbar';
 import gameState from "../module.game-state";
+import AbstractView from "../module.abstract-view";
 
 export default {
   gameTemplate(gameData) {
@@ -44,3 +45,23 @@ export default {
     });
   }
 };
+
+class FirstGameType extends AbstractView {
+  get template() {
+    return `
+  
+  <div class="game">
+    <p class="game__task">${this.data.text}</p>
+    <form class="game__content">
+    ${gameData.tasks.map((it) =>
+    `<div class="game__option">
+        <img src="${it.image}" alt="${it.alt}" width="468" height="458">
+        ${action(it)}
+      </div>`).join(``)}
+    </form>
+    ${statsBar(gameState)}
+  </div>`;
+  }
+}
+
+export {FirstGameType};

@@ -1,5 +1,2 @@
-
-import renderTemplateElement from "./module.render";
-import introPage from './templates/module.intro.js';
-
-renderTemplateElement(introPage);
+import Application from './module.main-apps';
+Application.showIntro();
