@@ -2,6 +2,7 @@ import IntroView from './templates/template.intro';
 import GreetingView from './templates/template.greeting';
 import RulesView from './templates/template.rules';
 import GameView from './module.game-engine';
+import StatsView from "./templates/template.stats";
 
 const main = document.querySelector(`.central`);
 
@@ -33,6 +34,6 @@ export default class Application {
     changeView(new GameView().startLevel());
   }
   static showResults() {
-    changeView(createResults());
+    changeView(new StatsView().element);
   }
 }

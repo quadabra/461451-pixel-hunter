@@ -10,9 +10,9 @@ export default class GameHeaderView extends AbstractView {
 
   template() {
     return `<header class="header">
-    ${new BackView().template()}
-    ${new TimerView().template()}
-    ${new LivesView().template()}
+    ${new BackView().element}
+    ${new TimerView().element}
+    ${new LivesView().element}
     </header>`;
   }
 }

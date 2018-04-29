@@ -4,23 +4,25 @@ export default class AbstractView {
     this.callback = callback;
     this.actionElements = null;
   }
-
   get element() {
     if (!this._markup) {
-      this._markup = this.render();
+      let fragment = this.render();
+      this._markup = document.createDocumentFragment();
+      while (fragment.childNodes.length) {
+        this._markup.appendChild(fragment.childNodes[0]);
+      }
       this.bind();
     }
     return this._markup;
   }
-
   get template() {
 
   }
 
   render() {
-    let fragment = document.createElement(`div`);
-    fragment.innerHTML = this.template();
-    return fragment;
+    let container = document.createElement(`div`);
+    container.innerHTML = this.template();
+    return container
   }
 
   bind() {

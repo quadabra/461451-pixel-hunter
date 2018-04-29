@@ -6,6 +6,8 @@ const gameType = {
   FIND_IMAGE: 2
 };
 
+gameData.gameType = gameType;
+
 // const answerType = {
 //   WRONG: 0,
 //   CORRECT: 1,

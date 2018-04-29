@@ -1,41 +1,21 @@
-import createTemplateElement from '../module.create-element';
-import back from './components/component.go-back';
-import lives from './components/component.lives';
-import timer from './components/component.timer';
 import statsBar from './components/component.statsbar';
 import gameState from '../module.game-state';
+import AbstractView from '../module.abstract-view';
 
-export default {
-  gameTemplate(gameData) {
-    return createTemplateElement(`
-  <header class="header">
-    ${back()}
-    ${timer(gameState)}
-    ${lives(gameState)}
-  </header>
+export default class ThirdGameType extends AbstractView{
+  template() {
+    return `
   <div class="game">
-    <p class="game__task">${gameData.text}</p>
+    <p class="game__task">${this.data.text}</p>
     <form class="game__content  game__content--triple">
-    ${gameData.tasks.map((it) => `<div class="game__option">
+    ${this.data.tasks.map((it) => `<div class="game__option">
         <img src="${it.image}" alt="${it.alt}" width="304" height="455">
       </div>`).join(``)}
     </form>
-    ${statsBar(gameState)}`);
-  },
-
-  gameCtrl(data, callback) {
-    const game = document.querySelectorAll(`.game__option`);
-    for (let i = 0; i < data.tasks.length; i++) {
-      game[i].addEventListener(`click`, () => {
-        if (data.tasks[i].type === `paint`) {
-          gameState.setStats(`correct`);
-          callback();
-        } else {
-          gameState.setStats(`wrong`);
-          gameState.setLives();
-          callback();
-        }
-      });
-    }
+    ${statsBar(gameState)}`
   }
-};
+  bind() {
+    this.actionElements = this.element.querySelectorAll('.game__option');
+    super.bind();
+  }
+}

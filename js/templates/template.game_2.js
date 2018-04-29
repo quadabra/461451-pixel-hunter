@@ -1,43 +1,24 @@
-import createTemplateElement from '../module.create-element';
-import back from './components/component.go-back';
-import lives from './components/component.lives';
-import timer from './components/component.timer';
-import action from './components/component.action';
+import ActionView from './components/component.action';
 import statsBar from './components/component.statsbar';
-import gameState from '../module.game-state';
+import gameState from "../module.game-state";
+import AbstractView from "../module.abstract-view";
 
-export default {
-  gameTemplate(gameData) {
-    return createTemplateElement(`
-  <header class="header">
-    ${back()}
-    ${timer(gameState)}
-    ${lives(gameState)}
-  </header>
-  <div class="game">
-    <p class="game__task">${gameData.text}</p>
+export default class SecondGameType extends AbstractView {
+  template() {
+    return `
+ <div class="game">
+    <p class="game__task">${this.data.text}</p>
     <form class="game__content  game__content--wide">
       <div class="game__option">
-        <img src="${gameData.tasks[0].image}" alt="Option 1" width="705" height="455">
-        ${action(gameData.tasks[0])}
+        <img src="${this.data.tasks[0].image}" alt="Option 1" width="705" height="455">
+       ${new ActionView(this.data.tasks[0]).template()}
       </div>
     </form>
     ${statsBar(gameState)}
-  </div>`);
-  },
-  gameCtrl(data, callback) {
-    document.forms[0].addEventListener(`change`, function () {
-      const val0 = document.forms[0].elements.question1.value;
-      if (document.forms[0].elements.question1.value) {
-        if (data.tasks[0].type === val0) {
-          gameState.setStats(`correct`);
-          callback();
-        } else {
-          gameState.setStats(`wrong`);
-          gameState.setLives();
-          callback();
-        }
-      }
-    });
+  </div>`;
   }
-};
+  bind() {
+    this.actionElements = this.element.querySelectorAll('.game__answer');
+    super.bind();
+  }
+}
