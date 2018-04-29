@@ -19,7 +19,7 @@ export default class FirstGameType extends AbstractView {
   </div>`;
   }
   bind() {
-    this.actionElements = this.element.querySelectorAll('.game__content');
+    this.actionElements = this.element.querySelectorAll(`.game__content`);
     super.bind();
   }
 }

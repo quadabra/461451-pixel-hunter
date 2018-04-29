@@ -100,7 +100,7 @@ export default class GameView {
       case gameData.gameType.FIND_IMAGE:
         return new ThirdGameType(this.task, GameView.thirdGameTypeCallback).element;
       default:
-        throw new Error('Unknown game type');
+        throw new Error(`Unknown game type`);
     }
   }
 

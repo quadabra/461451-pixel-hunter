@@ -22,7 +22,7 @@ export default class AbstractView {
   render() {
     let container = document.createElement(`div`);
     container.innerHTML = this.template();
-    return container
+    return container;
   }
 
   bind() {

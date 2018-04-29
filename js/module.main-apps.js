@@ -7,7 +7,7 @@ import StatsView from "./templates/template.stats";
 const main = document.querySelector(`.central`);
 
 const changeView = (view) => {
-  main.innerHTML = '';
+  main.innerHTML = ``;
   main.appendChild(view);
 };
 
@@ -27,7 +27,7 @@ export default class Application {
     changeView(this.currentView.element);
   }
   static startGame() {
-    if(this.currentView) {
+    if (this.currentView) {
       this.currentView.clear();
     }
     this.currentView = null;

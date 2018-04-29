@@ -1,17 +1,7 @@
 import AbstractView from '../../module.abstract-view';
 import gameState from '../../module.game-state';
-// export default (state) => (`
-//   <div class="game__lives">
-//     ${new Array(3 - state.lives)
-//       .fill(`<img src="img/heart__empty.svg" class="game__heart" alt="Life" width="32" height="32">`)
-//       .join(``)}
-//       ${new Array(state.lives)
-//       .fill(`<img src="img/heart__full.svg" class="game__heart" alt="Life" width="32" height="32">`)
-//       .join(``)}
-//   </div>`
-// );
 
-export default class LivesView extends AbstractView{
+export default class LivesView extends AbstractView {
   constructor() {
     super();
     this.lives = gameState.lives;
@@ -26,6 +16,6 @@ export default class LivesView extends AbstractView{
       ${new Array(gameState.lives)
       .fill(`<img src="img/heart__full.svg" class="game__heart" alt="Life" width="32" height="32">`)
       .join(``)}
-  </div>`
+  </div>`;
   }
 }

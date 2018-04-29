@@ -29,10 +29,10 @@ export default class RulesView extends AbstractView {
     this.submit = this.element.querySelector(`.continue`);
 
     this.input.addEventListener(`input`, (evt) => {
-      this.submit.disabled = (!evt.target.value)
+      this.submit.disabled = (!evt.target.value);
     });
 
-    this.actionElements = this.element.querySelectorAll('.continue');
+    this.actionElements = this.element.querySelectorAll(`.continue`);
     super.bind();
   }
 }

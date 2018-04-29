@@ -2,7 +2,7 @@ import statsBar from './components/component.statsbar';
 import gameState from '../module.game-state';
 import AbstractView from '../module.abstract-view';
 
-export default class ThirdGameType extends AbstractView{
+export default class ThirdGameType extends AbstractView {
   template() {
     return `
   <div class="game">
@@ -12,10 +12,10 @@ export default class ThirdGameType extends AbstractView{
         <img src="${it.image}" alt="${it.alt}" width="304" height="455">
       </div>`).join(``)}
     </form>
-    ${statsBar(gameState)}`
+    ${statsBar(gameState)}`;
   }
   bind() {
-    this.actionElements = this.element.querySelectorAll('.game__option');
+    this.actionElements = this.element.querySelectorAll(`.game__option`);
     super.bind();
   }
 }
