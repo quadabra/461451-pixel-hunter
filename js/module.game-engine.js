@@ -21,12 +21,6 @@ export default class GameView {
     this.game.appendChild(this.screen);
   }
 
-  firstTypeGame() {
-    const task = new FirstGameType(this.task);
-    task.onAnswer = GameView.firstGameTypeCallback;
-    return task.element;
-  }
-
   static firstGameTypeCallback(answer0, answer1) {
     const question0 = gameData.gameScreensData[gameState.current].tasks[0].type;
     const question1 = gameData.gameScreensData[gameState.current].tasks[1].type;
@@ -42,11 +36,21 @@ export default class GameView {
     }
   }
 
-  static secondGameTypeCallBack() {
-    const answer0 = document.forms[0].elements.question1.value;
+  static secondGameTypeCallBack(answer) {
     const question0 = gameData.gameScreensData[gameState.current].tasks[0].type;
-    if (document.forms[0].elements.question1.value) {
-      if (question0 === answer0) {
+    if (question0 === answer) {
+      gameState.setStats(`correct`);
+      GameView.goNextLvl();
+    } else {
+      gameState.setStats(`wrong`);
+      gameState.setLives();
+      GameView.goNextLvl();
+    }
+  }
+
+  static thirdGameTypeCallback(answer) {
+    let tasks = gameData.gameScreensData[gameState.current].tasks;
+      if (tasks[answer].type === `paint`) {
         gameState.setStats(`correct`);
         GameView.goNextLvl();
       } else {
@@ -54,25 +58,6 @@ export default class GameView {
         gameState.setLives();
         GameView.goNextLvl();
       }
-    }
-  }
-
-  static thirdGameTypeCallback(evt) {
-    evt.stopPropagation();
-    let gameOption = document.querySelectorAll(`.game__option`);
-    for (let i = 0; i < gameOption.length; i++) {
-      let question = gameData.gameScreensData[gameState.current].tasks[i].type;
-      if (gameOption[i] === evt.target) {
-        if (question === `paint`) {
-          gameState.setStats(`correct`);
-          GameView.goNextLvl();
-        } else {
-          gameState.setStats(`wrong`);
-          gameState.setLives();
-          GameView.goNextLvl();
-        }
-      }
-    }
   }
 
   static goNextLvl() {
@@ -95,14 +80,32 @@ export default class GameView {
     return header;
   }
 
+  firstTypeGame() {
+    const task = new FirstGameType(this.task);
+    task.onAnswer = GameView.firstGameTypeCallback;
+    return task.element;
+  }
+
+  secondTypeGame() {
+    const task = new SecondGameType(this.task);
+    task.onAnswer = GameView.secondGameTypeCallBack;
+    return task.element;
+  }
+
+  thirdTypeGame() {
+    const task = new ThirdGameType(this.task);
+    task.onAnswer = GameView.thirdGameTypeCallback;
+    return task.element;
+  }
+
   renderScreen() {
     switch (this.task.gameType) {
       case gameData.gameType.TWO_IMAGES:
         return this.firstTypeGame();
       case gameData.gameType.ONE_IMAGE:
-        return new SecondGameType(this.task, GameView.secondGameTypeCallBack).element;
+        return this.secondTypeGame();
       case gameData.gameType.FIND_IMAGE:
-        return new ThirdGameType(this.task, GameView.thirdGameTypeCallback).element;
+        return this.thirdTypeGame();
       default:
         throw new Error(`Unknown game type`);
     }
