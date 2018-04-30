@@ -60,6 +60,18 @@ export default class GameView {
       }
   }
 
+  // showNextLvl(){}
+  // showStats(){}
+  // goNextLvl() {
+  //   gameState.current++;
+  //   if (gameState.current < 10 && gameState.lives > 0) {
+  //     this.showNextLvl();
+  //   } else {
+  //     gameState.getResult();
+  //     this.showStats();
+  //   }
+  // }
+
   static goNextLvl() {
     gameState.current++;
     if (gameState.current < 10 && gameState.lives > 0) {
@@ -68,7 +80,6 @@ export default class GameView {
       gameState.getResult();
       Application.showResults();
     }
-
   }
 
   static renderHeader() {

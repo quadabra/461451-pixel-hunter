@@ -35,6 +35,9 @@ export default class Application {
       this.currentView.clear();
     }
     this.currentView = null;
+    const gameView = new GameView();
+    gameView.showNextLvl = () => this.startGame();
+    gameView.showStats = () => this.showResults();
     changeView(new GameView().startLevel());
   }
   static showResults() {
