@@ -1,4 +1,5 @@
 const state = {
+  name: ``,
   current: 0,
   timer: `NN`,
   lives: 3,
@@ -36,6 +37,9 @@ const state = {
   },
   setLives() {
     this.lives--;
+  },
+  setName(name) {
+    this.name = name;
   }
 };
 

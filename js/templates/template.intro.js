@@ -1,11 +1,9 @@
 import gameData from "../module.game-data";
 import AbstractView from "../module.abstract-view";
-import Application from "../module.main-apps";
 
 export default class IntroView extends AbstractView {
   constructor() {
     super();
-    this.callback = () => Application.showGreeting();
   }
   template() {
     return `<div id="main" class="central__content">
@@ -16,7 +14,8 @@ export default class IntroView extends AbstractView {
   </div>`;
   }
   bind() {
-    this.actionElements = this.element.querySelectorAll(`.intro__asterisk`);
+    this.actionElement = this.element.querySelector(`.intro__asterisk`);
+    this.actionElement.addEventListener(`click`, () => this.onShowGreeting());
     super.bind();
   }
 }

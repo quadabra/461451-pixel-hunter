@@ -1,12 +1,10 @@
 import gameData from '../module.game-data';
 import AbstractView from '../module.abstract-view';
-import Application from '../module.main-apps';
 import BackView from './components/component.go-back';
 
 export default class RulesView extends AbstractView {
   constructor() {
     super();
-    this.callback = () => Application.startGame();
   }
 
   template() {
@@ -32,7 +30,7 @@ export default class RulesView extends AbstractView {
       this.submit.disabled = (!evt.target.value);
     });
 
-    this.actionElements = this.element.querySelectorAll(`.continue`);
+    this.submit.addEventListener(`click`, () => this.onStartGame(this.input.value));
     super.bind();
   }
 }
