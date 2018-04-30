@@ -21,9 +21,13 @@ export default class GameView {
     this.game.appendChild(this.screen);
   }
 
-  static firstGameTypeCallback() {
-    const answer0 = document.forms[0].elements.question1.value;
-    const answer1 = document.forms[0].elements.question2.value;
+  firstTypeGame() {
+    const task = new FirstGameType(this.task);
+    task.onAnswer = GameView.firstGameTypeCallback;
+    return task.element;
+  }
+
+  static firstGameTypeCallback(answer0, answer1) {
     const question0 = gameData.gameScreensData[gameState.current].tasks[0].type;
     const question1 = gameData.gameScreensData[gameState.current].tasks[1].type;
     if (answer0 && answer1) {
@@ -94,7 +98,7 @@ export default class GameView {
   renderScreen() {
     switch (this.task.gameType) {
       case gameData.gameType.TWO_IMAGES:
-        return new FirstGameType(this.task, GameView.firstGameTypeCallback).element;
+        return this.firstTypeGame();
       case gameData.gameType.ONE_IMAGE:
         return new SecondGameType(this.task, GameView.secondGameTypeCallBack).element;
       case gameData.gameType.FIND_IMAGE:
