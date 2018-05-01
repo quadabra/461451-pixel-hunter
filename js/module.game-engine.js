@@ -6,7 +6,7 @@ import ThirdGameType from './templates/template.game_3';
 import BackView from './templates/components/component.go-back';
 import TimerView from './templates/components/component.timer';
 import LivesView from './templates/components/component.lives';
-import Application from './module.main-apps';
+import Application from './module.application';
 
 export default class GameView {
   constructor() {
@@ -50,14 +50,14 @@ export default class GameView {
 
   static thirdGameTypeCallback(answer) {
     let tasks = gameData.gameScreensData[gameState.current].tasks;
-      if (tasks[answer].type === `paint`) {
-        gameState.setStats(`correct`);
-        GameView.goNextLvl();
-      } else {
-        gameState.setStats(`wrong`);
-        gameState.setLives();
-        GameView.goNextLvl();
-      }
+    if (tasks[answer].type === `paint`) {
+      gameState.setStats(`correct`);
+      GameView.goNextLvl();
+    } else {
+      gameState.setStats(`wrong`);
+      gameState.setLives();
+      GameView.goNextLvl();
+    }
   }
 
   // showNextLvl(){}

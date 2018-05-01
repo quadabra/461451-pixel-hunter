@@ -1,2 +1,2 @@
-import Application from './module.main-apps';
+import Application from './module.application';
 Application.showIntro();

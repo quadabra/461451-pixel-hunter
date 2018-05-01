@@ -1,4 +1,5 @@
 import AbstractView from "../../module.abstract-view";
+import Application from '../../module.application';
 
 export default class BackView extends AbstractView {
   constructor() {
@@ -12,5 +13,10 @@ export default class BackView extends AbstractView {
   <img src="img/logo_small.svg" width="101" height="44">
   </button>
   </div>`;
+  }
+
+  bind() {
+    this.actionElement = this.element.querySelector(`.back`);
+    this.actionElement.addEventListener(`click`, () => Application.showGreeting());
   }
 }
