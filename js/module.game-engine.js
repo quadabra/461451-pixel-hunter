@@ -1,16 +1,14 @@
 import gameData from './module.game-data';
 import gameState from './module.game-state';
+import GameModel from './module.game-model';
 import FirstGameType from './templates/template.game_1';
 import SecondGameType from './templates/template.game_2';
 import ThirdGameType from './templates/template.game_3';
-import backView from './templates/components/component.go-back';
-import TimerView from './templates/components/component.timer';
-import LivesView from './templates/components/component.lives';
 import GameHeader from './templates/template.game-header';
 import Application from './module.application';
 
 export default class GameView {
-  constructor() {
+  constructor(model) {
     this.round = gameState.current;
     this.task = gameData.gameScreensData[this.round];
 

@@ -5,7 +5,7 @@ import lives from './components/component.lives';
 
 export default class HeaderView extends AbstractView {
   constructor() {
-    super()
+    super();
   }
   template() {
     return `

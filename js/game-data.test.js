@@ -12,7 +12,7 @@ const results = (answers, lives) => {
   let score = 0;
   if (answers.length >= 10) {
     answers.forEach(function (it) {
-      score = score + it.correct * 100 + it.time * 50;
+      score = score + it.CORRECT * 100 + it.time * 50;
     });
     return score + lives * 50;
   } else {
@@ -22,54 +22,54 @@ const results = (answers, lives) => {
 
 const answersFull = [
   {
-    correct: true,
+    CORRECT: true,
     time: 1
   },
   {
-    correct: true,
+    CORRECT: true,
     time: -1
   },
   {
-    correct: true,
+    CORRECT: true,
     time: 0
   },
   {
-    correct: true,
+    CORRECT: true,
     time: 0
   },
   {
-    correct: true,
+    CORRECT: true,
     time: 0
   },
   {
-    correct: true,
+    CORRECT: true,
     time: 0
   },
   {
-    correct: true,
+    CORRECT: true,
     time: 0
   },
   {
-    correct: true,
+    CORRECT: true,
     time: 0
   },
   {
-    correct: true,
+    CORRECT: true,
     time: 0
   },
   {
-    correct: true,
+    CORRECT: true,
     time: 0
   },
 ];
 
 const answersFew = [
   {
-    correct: true,
+    CORRECT: true,
     time: 0
   },
   {
-    correct: true,
+    CORRECT: true,
     time: 0
   }
 ];
