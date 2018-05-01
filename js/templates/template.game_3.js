@@ -15,7 +15,15 @@ export default class ThirdGameType extends AbstractView {
     ${statsBar(gameState)}`;
   }
   bind() {
-    this.actionElements = this.element.querySelectorAll(`.game__option`);
+    this.actionElement = this.element.querySelector(`.game__content`);
+    this.images = this.element.querySelectorAll(`.game__option`);
+    this.actionElement.addEventListener(`click`, (evt) => {
+      for (let i = 0; i < this.images.length; i++) {
+        if (evt.target === this.images[i]) {
+          this.onAnswer(i);
+        }
+      }
+    });
     super.bind();
   }
 }

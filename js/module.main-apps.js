@@ -13,24 +13,31 @@ const changeView = (view) => {
 
 export default class Application {
   static showIntro() {
-    this.currentView = new IntroView();
-    changeView(this.currentView.element);
+    const introView = new IntroView();
+    introView.onShowGreeting = () => this.showGreeting();
+    changeView(introView.element);
+    this.currentView = introView;
   }
   static showGreeting() {
-    this.currentView.clear();
-    this.currentView = new GreetingView();
-    changeView(this.currentView.element);
+    const greetingView = new GreetingView();
+    greetingView.onShowRules = () => this.showRules();
+    changeView(greetingView.element);
+    this.currentView = greetingView;
   }
   static showRules() {
-    this.currentView.clear();
-    this.currentView = new RulesView();
-    changeView(this.currentView.element);
+    const rulesView = new RulesView();
+    rulesView.onStartGame = () => this.startGame();
+    changeView(rulesView.element);
+    this.currentView = rulesView;
   }
   static startGame() {
     if (this.currentView) {
       this.currentView.clear();
     }
     this.currentView = null;
+    const gameView = new GameView();
+    gameView.showNextLvl = () => this.startGame();
+    gameView.showStats = () => this.showResults();
     changeView(new GameView().startLevel());
   }
   static showResults() {
