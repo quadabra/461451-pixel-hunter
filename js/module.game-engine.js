@@ -3,9 +3,10 @@ import gameState from './module.game-state';
 import FirstGameType from './templates/template.game_1';
 import SecondGameType from './templates/template.game_2';
 import ThirdGameType from './templates/template.game_3';
-import BackView from './templates/components/component.go-back';
+import backView from './templates/components/component.go-back';
 import TimerView from './templates/components/component.timer';
 import LivesView from './templates/components/component.lives';
+import GameHeader from './templates/template.game-header';
 import Application from './module.application';
 
 export default class GameView {
@@ -83,12 +84,7 @@ export default class GameView {
   }
 
   static renderHeader() {
-    const header = document.createElement(`header`);
-    header.classList.add(`header`);
-    header.appendChild(new BackView().element);
-    header.appendChild(new TimerView().element);
-    header.appendChild(new LivesView().element);
-    return header;
+    return new GameHeader().element;
   }
 
   firstTypeGame() {

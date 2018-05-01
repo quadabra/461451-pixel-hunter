@@ -1,4 +1,4 @@
-import ActionView from './components/component.action';
+import actionView from './components/component.action';
 import statsBar from './components/component.statsbar';
 import gameState from '../module.game-state';
 import AbstractView from '../module.abstract-view';
@@ -12,7 +12,7 @@ export default class FirstGameType extends AbstractView {
     ${this.data.tasks.map((it) =>
     `<div class="game__option">
         <img src="${it.image}" alt="${it.alt}" width="468" height="458">
-        ${new ActionView(it).template()}
+        ${actionView(it)}
       </div>`).join(``)}
     </form>
     ${statsBar(gameState)}

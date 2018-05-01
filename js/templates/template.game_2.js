@@ -1,4 +1,4 @@
-import ActionView from './components/component.action';
+import actionView from './components/component.action';
 import statsBar from './components/component.statsbar';
 import gameState from "../module.game-state";
 import AbstractView from "../module.abstract-view";
@@ -11,7 +11,7 @@ export default class SecondGameType extends AbstractView {
     <form class="game__content  game__content--wide">
       <div class="game__option">
         <img src="${this.data.tasks[0].image}" alt="Option 1" width="705" height="455">
-       ${new ActionView(this.data.tasks[0]).template()}
+       ${actionView(this.data.tasks[0])}
       </div>
     </form>
     ${statsBar(gameState)}

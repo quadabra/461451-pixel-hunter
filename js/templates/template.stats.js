@@ -1,5 +1,5 @@
 import AbstractView from '../module.abstract-view';
-import BackView from './components/component.go-back';
+import backView from './components/component.go-back';
 import statsBar from './components/component.statsbar';
 import gameState from '../module.game-state';
 
@@ -8,7 +8,7 @@ export default class StatsView extends AbstractView {
     return `
   <div class="result">
     <header class="header">
-    ${new BackView().template()}
+    ${backView()}
     </header>
     <h1>${gameState.result.text}</h1>
     <table class="result__table">

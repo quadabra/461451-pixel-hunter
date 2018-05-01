@@ -1,6 +1,6 @@
 import gameData from '../module.game-data';
 import AbstractView from '../module.abstract-view';
-import BackView from './components/component.go-back';
+import back from './components/component.go-back';
 
 export default class RulesView extends AbstractView {
   constructor() {
@@ -10,7 +10,7 @@ export default class RulesView extends AbstractView {
   template() {
     return `
 <header class="header">
-    ${new BackView().template()}
+    ${back()}
   </header>
   <div class="rules">
     <h1 class="rules__title">${gameData.rulesData.title}</h1>
