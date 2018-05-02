@@ -12,7 +12,7 @@ export default class GameModel {
   }
 
   calcResults() {
-    this._result.text = (this._state.lives > 0) ? `Победа!` : `FAIL`;
+    this._result.text = (this.lives > 0) ? `Победа!` : `FAIL`;
     this._answers.forEach((it) => {
       switch (it) {
         case answerTypes.CORRECT:

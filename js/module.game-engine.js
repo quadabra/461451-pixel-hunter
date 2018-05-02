@@ -14,7 +14,7 @@ export default class GameScreen {
     this.header = this.renderHeader();
     this.screen = this.renderScreen();
 
-    this.game = document.createDocumentFragment();
+    this.game = document.createElement(`div`);
     this.game.appendChild(this.header);
     this.game.appendChild(this.screen);
   }
@@ -28,7 +28,6 @@ export default class GameScreen {
         this.goNextLvl();
       } else {
         this.model.answer(`wrong`);
-        this.model.wrongAnswer();
         this.goNextLvl();
       }
     }
@@ -37,11 +36,10 @@ export default class GameScreen {
   secondGameTypeCallBack(answer) {
     const question0 = this.task.tasks[0].type;
     if (question0 === answer) {
-      this.model.setStats(`correct`);
+      this.model.answer(`correct`);
       this.goNextLvl();
     } else {
-      this.model.setStats(`wrong`);
-      this.model.setLives();
+      this.model.answer(`wrong`);
       this.goNextLvl();
     }
   }
@@ -53,17 +51,16 @@ export default class GameScreen {
       this.goNextLvl();
     } else {
       this.model.answer(`wrong`);
-      this.model.setLives();
       this.goNextLvl();
     }
   }
 
   goNextLvl() {
-    this.model.current++;
+    this.round++;
     if (this.model.current < 10 && this.model.lives > 0) {
       this.updateGame();
     } else {
-      this.model.getResult();
+      this.model.calcResults();
       Application.showResults();
     }
   }

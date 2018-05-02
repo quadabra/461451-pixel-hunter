@@ -7,7 +7,7 @@ export default class AbstractView {
   get element() {
     if (!this._markup) {
       let fragment = this.render();
-      this._markup = document.createDocumentFragment();
+      this._markup = document.createElement(`div`);
       while (fragment.childNodes.length) {
         this._markup.appendChild(fragment.childNodes[0]);
       }
