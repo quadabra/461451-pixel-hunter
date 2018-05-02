@@ -1,9 +1,6 @@
-const answerTypes = {
-  CORRECT: `correct`,
-  FAST: `fast`,
-  SLOW: `slow`,
-  WRONG: `wrong`
-};
+import gameData from './module.game-data';
+
+const answerTypes = gameData.answerTypes;
 
 export default class GameModel {
   constructor(user) {
@@ -55,6 +52,10 @@ export default class GameModel {
 
   canContinue() {
     return (this.current < 10 && this.lives > 0)
+  }
+
+  timeStart() {
+    return this.timer;
   }
 
   init() {

@@ -1,227 +1,177 @@
 const gameData = {};
 
-const gameType = {
+const gameTypes = {
   TWO_IMAGES: 0,
   ONE_IMAGE: 1,
   FIND_IMAGE: 2
 };
 
-gameData.gameType = gameType;
-
-// const answerType = {
-//   WRONG: 0,
-//   CORRECT: 1,
-//   SLOW: 2,
-//   FAST: 3,
-//   UNKNOWN: 4
-// };
-//
-// const answerPrice = {
-//   CORRECT: 100,
-//   FAST: 50,
-//   SLOW: -50
-// };
-
-const imageType = {
+const imageTypes = {
   PAINT: `paint`,
   PHOTO: `photo`
 };
 
-// const gameText = new Set([
-//   `Угадайте для каждого изображения фото или рисунок?`,
-//   `Угадай, фото или рисунок?`,
-//   `Найдите рисунок среди изображений`]);
-
-gameData.stats = {
-  timer: `NN`,
-  lives: 3,
-  stats: [],
-  result: {
-    text: ``,
-    answerPoints: 0,
-    speedPoints: 0,
-    livesPoints: 0,
-    slowPoints: 0,
-    totalPoints: 0
-  },
-  getResult() {
-    this.result.text = (this.lives > 0) ? `Победа!` : `FAIL`;
-    this.stats.forEach((it) => {
-      if (it === `correct`) {
-        this.result.answerPoints += 100;
-      }
-    });
-    this.result.livesPoints = this.lives * 50;
-    this.result.totalPoints = this.result.answerPoints + this.result.livesPoints;
-  },
-  getStats() {
-    let answers = new Array(10);
-    for (let i = 0; i < answers.length; i++) {
-      answers[i] = (this.stats[i]) ? this.stats[i] : `unknown`;
-    }
-    return answers;
-  },
-  setStats(answer) {
-    this.stats.push(answer);
-  },
-  initLives() {
-    this.lives = 3;
-  },
-  setLives() {
-    this.lives--;
-  }
+const answerTypes = {
+  CORRECT: `correct`,
+  FAST: `fast`,
+  SLOW: `slow`,
+  WRONG: `wrong`
 };
+
+gameData.gameType = gameTypes;
+gameData.imageTypes = imageTypes;
+gameData.answerTypes = answerTypes;
 
 gameData.gameScreensData = [
   {
-    gameType: gameType.TWO_IMAGES,
+    gameType: gameTypes.TWO_IMAGES,
     text: `Угадайте для каждого изображения фото или рисунок?`,
     tasks: [{
       image: `http://i.imgur.com/DKR1HtB.jpg`,
       name: `question1`,
       alt: `Option 1`,
-      type: imageType.PHOTO
+      type: imageTypes.PHOTO
     },
     {
       image: `https://k32.kn3.net/5C7060EC5.jpg`,
       name: `question2`,
       alt: `Option 2`,
-      type: imageType.PAINT
+      type: imageTypes.PAINT
     }]
   },
   {
-    gameType: gameType.ONE_IMAGE,
+    gameType: gameTypes.ONE_IMAGE,
     text: `Угадай, фото или рисунок?`,
     tasks: [{
       image: `https://k42.kn3.net/D2F0370D6.jpg`,
       name: `question1`,
       alt: `Option 1`,
-      type: imageType.PAINT
+      type: imageTypes.PAINT
     }]
   },
   {
-    gameType: gameType.FIND_IMAGE,
+    gameType: gameTypes.FIND_IMAGE,
     text: `Найдите рисунок среди изображений`,
     tasks: [{
       image: `http://i.imgur.com/1KegWPz.jpg`,
       alt: `Option 1`,
-      type: imageType.PHOTO
+      type: imageTypes.PHOTO
     },
     {
       image: `https://i.imgur.com/DiHM5Zb.jpg`,
       alt: `Option 1`,
-      type: imageType.PHOTO
+      type: imageTypes.PHOTO
     },
     {
       image: `https://k42.kn3.net/CF42609C8.jpg`,
       alt: `Option 1`,
-      type: imageType.PAINT
+      type: imageTypes.PAINT
     }]
   },
   {
-    gameType: gameType.TWO_IMAGES,
+    gameType: gameTypes.TWO_IMAGES,
     text: `Угадайте для каждого изображения фото или рисунок?`,
     tasks: [{
       image: `http://i.imgur.com/DKR1HtB.jpg`,
       name: `question1`,
       alt: `Option 1`,
-      type: imageType.PHOTO
+      type: imageTypes.PHOTO
     },
     {
       image: `https://k32.kn3.net/5C7060EC5.jpg`,
       name: `question2`,
       alt: `Option 2`,
-      type: imageType.PAINT
+      type: imageTypes.PAINT
     }]
   },
   {
-    gameType: gameType.ONE_IMAGE,
+    gameType: gameTypes.ONE_IMAGE,
     text: `Угадай, фото или рисунок?`,
     tasks: [{
       image: `https://k42.kn3.net/D2F0370D6.jpg`,
       name: `question1`,
       alt: `Option 1`,
-      type: imageType.PAINT
+      type: imageTypes.PAINT
     }]
   },
   {
-    gameType: gameType.FIND_IMAGE,
+    gameType: gameTypes.FIND_IMAGE,
     text: `Найдите рисунок среди изображений`,
     tasks: [{
       image: `http://i.imgur.com/1KegWPz.jpg`,
       alt: `Option 1`,
-      type: imageType.PHOTO
+      type: imageTypes.PHOTO
     },
     {
       image: `https://i.imgur.com/DiHM5Zb.jpg`,
       alt: `Option 1`,
-      type: imageType.PHOTO
+      type: imageTypes.PHOTO
     },
     {
       image: `https://k42.kn3.net/CF42609C8.jpg`,
       alt: `Option 1`,
-      type: imageType.PAINT
+      type: imageTypes.PAINT
     }]
   },
   {
-    gameType: gameType.TWO_IMAGES,
+    gameType: gameTypes.TWO_IMAGES,
     text: `Угадайте для каждого изображения фото или рисунок?`,
     tasks: [{
       image: `http://i.imgur.com/DKR1HtB.jpg`,
       name: `question1`,
       alt: `Option 1`,
-      type: imageType.PHOTO
+      type: imageTypes.PHOTO
     },
     {
       image: `https://k32.kn3.net/5C7060EC5.jpg`,
       name: `question2`,
       alt: `Option 2`,
-      type: imageType.PAINT
+      type: imageTypes.PAINT
     }]
   },
   {
-    gameType: gameType.ONE_IMAGE,
+    gameType: gameTypes.ONE_IMAGE,
     text: `Угадай, фото или рисунок?`,
     tasks: [{
       image: `https://k42.kn3.net/D2F0370D6.jpg`,
       name: `question1`,
       alt: `Option 1`,
-      type: imageType.PAINT
+      type: imageTypes.PAINT
     }]
   },
   {
-    gameType: gameType.FIND_IMAGE,
+    gameType: gameTypes.FIND_IMAGE,
     text: `Найдите рисунок среди изображений`,
     tasks: [{
       image: `http://i.imgur.com/1KegWPz.jpg`,
       alt: `Option 1`,
-      type: imageType.PHOTO
+      type: imageTypes.PHOTO
     },
     {
       image: `https://i.imgur.com/DiHM5Zb.jpg`,
       alt: `Option 1`,
-      type: imageType.PHOTO
+      type: imageTypes.PHOTO
     },
     {
       image: `https://k42.kn3.net/CF42609C8.jpg`,
       alt: `Option 1`,
-      type: imageType.PAINT
+      type: imageTypes.PAINT
     }]
   },
   {
-    gameType: gameType.TWO_IMAGES,
+    gameType: gameTypes.TWO_IMAGES,
     text: `Угадайте для каждого изображения фото или рисунок?`,
     tasks: [{
       image: `http://i.imgur.com/DKR1HtB.jpg`,
       name: `question1`,
       alt: `Option 1`,
-      type: imageType.PHOTO
+      type: imageTypes.PHOTO
     },
     {
       image: `https://k32.kn3.net/5C7060EC5.jpg`,
       name: `question2`,
       alt: `Option 2`,
-      type: imageType.PAINT
+      type: imageTypes.PAINT
     }]
   }
 ];
