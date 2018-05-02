@@ -2,7 +2,7 @@ import gameData from './module.game-data';
 import FirstGameType from './templates/template.game_1';
 import SecondGameType from './templates/template.game_2';
 import ThirdGameType from './templates/template.game_3';
-import GameHeader from './templates/template.game-header';
+import HeaderView from './templates/template.game-header';
 import Application from './module.application';
 
 export default class GameScreen {
@@ -69,7 +69,7 @@ export default class GameScreen {
   }
 
   renderHeader() {
-    return new GameHeader(this.model).element;
+    return new HeaderView(this.model).element;
   }
 
   updateHeader() {
