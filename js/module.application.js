@@ -33,20 +33,17 @@ export default class Application {
     this.currentView = rulesView;
   }
   static startGame(name) {
-    if (this.currentView) {
-      this.currentView.clear();
-    }
-    this.currentView = null;
     const model = new GameModel(name);
     const gameView = new GameScreen(model);
     gameView.onShowStats = (data) => this.showResults(data);
     gameView.onShowGreeting = () => this.showGreeting();
     changeView(gameView.startLevel());
+    this.currentView = gameView;
   }
   static showResults(data) {
     const statsView = new StatsView(data).element;
+    statsView.onStartGame = (name) => this.startGame(name);
     changeView(statsView);
-    statsView.onStartGame = (name) => this.showGreeting(name);
     this.currentView = statsView;
   }
 }
