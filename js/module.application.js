@@ -20,12 +20,14 @@ export default class Application {
     this.currentView = introView;
   }
   static showGreeting() {
+    this.currentView.clear();
     const greetingView = new GreetingView();
     greetingView.onShowRules = () => this.showRules();
     changeView(greetingView.element);
     this.currentView = greetingView;
   }
   static showRules() {
+    this.currentView.clear();
     const rulesView = new RulesView();
     rulesView.onStartGame = (name) => this.startGame(name);
     rulesView.onShowGreeting = () => this.showGreeting();
@@ -33,6 +35,7 @@ export default class Application {
     this.currentView = rulesView;
   }
   static startGame(name) {
+    this.currentView.clear();
     const model = new GameModel(name);
     const gameView = new GameScreen(model);
     gameView.onShowStats = (data) => this.showResults(data);
