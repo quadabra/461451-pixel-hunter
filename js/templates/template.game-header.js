@@ -22,8 +22,12 @@ export default class HeaderView extends AbstractView {
   header() {
     let headerContent = [];
     headerContent.push(this.back);
-    if (this.model.timer) { headerContent.push(this.timer)}
-    if (this.model.lives) { headerContent.push(this.lives)}
+    if (this.model.timer) {
+      headerContent.push(this.timer);
+    }
+    if (this.model.lives) {
+      headerContent.push(this.lives);
+    }
     return headerContent;
   }
 

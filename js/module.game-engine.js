@@ -59,7 +59,7 @@ export default class GameScreen {
   }
 
   makeAnswer(type, time) {
-    if (type = gameData.answerTypes.CORRECT) {
+    if (type === gameData.answerTypes.CORRECT) {
       switch (time) {
         case time > 20:
           return gameData.answerTypes.FAST;
@@ -68,7 +68,9 @@ export default class GameScreen {
         default:
           return type;
       }
-    } else return gameData.answerTypes.WRONG;
+    } else {
+      return gameData.answerTypes.WRONG;
+    }
   }
 
   goNextLvl() {
@@ -138,12 +140,12 @@ export default class GameScreen {
 
   currentTask() {
     this.task = gameData.gameScreensData[this.model.current];
-    this.task.state = this.model.statsBar();
+    this.task.state = this.model.statsBarData();
     return this.task;
   }
 
   timerStart() {
-    this.timer.configure(this.model.timeStart(), this.game.querySelector('.game__timer'), this.timeOverCallback.bind(this)).start();
+    this.timer.configure(this.model.timeStart(), this.game.querySelector(`.game__timer`), this.timeOverCallback.bind(this)).start();
   }
 
   reset() {

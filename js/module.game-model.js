@@ -27,16 +27,16 @@ export default class GameModel {
           this._result.answerPoints += 0;
           break;
         default:
-          throw new Error(`Unknown answer type`)
+          throw new Error(`Unknown answer type`);
       }
     });
     this._result.livesPoints = this.lives * 50;
     this._result.totalPoints = this._result.answerPoints + this._result.livesPoints + this._result.speedPoints - this._result.slowPoints;
     this._result.lives = this.lives;
-    this._result.stats = this.statsBar();
+    this._result.stats = this.statsBarData();
   }
 
-  statsBar() {
+  statsBarData() {
     let answers = new Array(10);
     for (let i = 0; i < answers.length; i++) {
       answers[i] = (this._answers[i]) ? this._answers[i] : `unknown`;
@@ -53,7 +53,7 @@ export default class GameModel {
   }
 
   canContinue() {
-    return (this.current < 10 && this.lives > 0)
+    return (this.current < 10 && this.lives > 0);
   }
 
   timeStart() {
@@ -76,6 +76,8 @@ export default class GameModel {
   }
   answer(answer) {
     this._answers.push(answer);
-    if (answer === answerTypes.WRONG) this.lives--;
+    if (answer === answerTypes.WRONG) {
+      this.lives--;
+    }
   }
 }
