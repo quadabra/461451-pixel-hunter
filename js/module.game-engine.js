@@ -5,10 +5,12 @@ import SecondGameType from './templates/template.game_2';
 import ThirdGameType from './templates/template.game_3';
 import GameHeader from './templates/template.game-header';
 import Application from './module.application';
+import GameModel from './module.game-model';
 
-export default class GameView {
-  constructor(model) {
-    this.model = gameState;
+export default class GameScreen {
+  constructor() {
+    this.name = `player`;
+    this.model = new GameModel(this.name);
     this.round = this.model.current;
     this.task = gameData.gameScreensData[this.round];
 
@@ -21,22 +23,22 @@ export default class GameView {
   }
 
   firstGameTypeCallback(answer0, answer1) {
-    const question0 = gameData.gameScreensData[gameState.current].tasks[0].type;
-    const question1 = gameData.gameScreensData[gameState.current].tasks[1].type;
+    const question0 = this.task.tasks[0].type;
+    const question1 = this.task.tasks[1].type;
     if (answer0 && answer1) {
       if (question0 === answer0 && question1 === answer1) {
-        this.model.setStats(`correct`);
+        this.model.answer(`correct`);
         this.goNextLvl();
       } else {
-        this.model.setStats(`wrong`);
-        this.model.setLives();
+        this.model.answer(`wrong`);
+        this.model.wrongAnswer();
         this.goNextLvl();
       }
     }
   }
 
   secondGameTypeCallBack(answer) {
-    const question0 = gameData.gameScreensData[gameState.current].tasks[0].type;
+    const question0 = this.task.tasks[0].type;
     if (question0 === answer) {
       this.model.setStats(`correct`);
       this.goNextLvl();
@@ -48,12 +50,12 @@ export default class GameView {
   }
 
   thirdGameTypeCallback(answer) {
-    let tasks = gameData.gameScreensData[gameState.current].tasks;
+    let tasks = this.task.tasks;
     if (tasks[answer].type === `paint`) {
-      this.model.setStats(`correct`);
+      this.model.answer(`correct`);
       this.goNextLvl();
     } else {
-      this.model.setStats(`wrong`);
+      this.model.answer(`wrong`);
       this.model.setLives();
       this.goNextLvl();
     }
@@ -74,7 +76,7 @@ export default class GameView {
   goNextLvl() {
     this.model.current++;
     if (this.model.current < 10 && this.model.lives > 0) {
-      Application.startGame();
+      this.startLevel();
     } else {
       this.model.getResult();
       Application.showResults();
@@ -87,19 +89,19 @@ export default class GameView {
 
   firstTypeGame() {
     const task = new FirstGameType(this.task);
-    task.onAnswer = this.firstGameTypeCallback;
+    task.onAnswer = this.firstGameTypeCallback.bind(this);
     return task.element;
   }
 
   secondTypeGame() {
     const task = new SecondGameType(this.task);
-    task.onAnswer = this.secondGameTypeCallBack;
+    task.onAnswer = this.secondGameTypeCallBack.bind(this);
     return task.element;
   }
 
   thirdTypeGame() {
     const task = new ThirdGameType(this.task);
-    task.onAnswer = this.thirdGameTypeCallback;
+    task.onAnswer = this.thirdGameTypeCallback.bind(this);
     return task.element;
   }
 

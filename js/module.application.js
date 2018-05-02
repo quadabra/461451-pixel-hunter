@@ -1,7 +1,7 @@
 import IntroView from './templates/template.intro';
 import GreetingView from './templates/template.greeting';
 import RulesView from './templates/template.rules';
-import GameView from './module.game-engine';
+import GameScreen from './module.game-engine';
 import StatsView from "./templates/template.stats";
 import GameModel from './module.game-model';
 
@@ -36,10 +36,10 @@ export default class Application {
       this.currentView.clear();
     }
     this.currentView = null;
-    const gameView = new GameView();
+    const gameView = new GameScreen();
     gameView.showNextLvl = () => this.startGame();
     gameView.showStats = () => this.showResults();
-    changeView(new GameView().startLevel());
+    changeView(new GameScreen().startLevel());
   }
   static showResults() {
     changeView(new StatsView().element);
