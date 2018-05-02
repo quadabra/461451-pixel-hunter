@@ -4,6 +4,10 @@ import statsBar from './components/component.statsbar';
 
 
 export default class StatsView extends AbstractView {
+  constructor(data) {
+    super();
+    this.data = data;
+  }
   template() {
     return `
   <div class="result">
@@ -50,7 +54,7 @@ export default class StatsView extends AbstractView {
   }
   bind() {
     this.back = this.element.querySelector(`.back`);
-    this.back.addEventListener(`click`, () => this.onShowGreeting());
+    this.back.addEventListener(`click`, () => this.onStartGame(this.data.name));
     super.bind();
   }
 }

@@ -46,7 +46,7 @@ export default class Application {
   static showResults(data) {
     const statsView = new StatsView(data).element;
     changeView(statsView);
-    statsView.onShowGreeting = () => this.showGreeting();
+    statsView.onStartGame = (name) => this.showGreeting(name);
     this.currentView = statsView;
   }
 }
