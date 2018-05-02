@@ -12,58 +12,58 @@ export default class GameModel {
   }
 
   calcResults() {
-    this.result.text = (this._state.lives > 0) ? `Победа!` : `FAIL`;
-    this.answers.forEach((it) => {
+    this._result.text = (this._state.lives > 0) ? `Победа!` : `FAIL`;
+    this._answers.forEach((it) => {
       switch (it) {
         case answerTypes.CORRECT:
-          this.result.answerPoints += 100;
+          this._result.answerPoints += 100;
           break;
         case answerTypes.FAST:
-          this.result.answerPoints += 100;
-          this.result.speedPoints += 50;
+          this._result.answerPoints += 100;
+          this._result.speedPoints += 50;
           break;
         case answerTypes.SLOW:
-          this.result.answerPoints += 100;
-          this.result.slowPoints += 50;
+          this._result.answerPoints += 100;
+          this._result.slowPoints += 50;
           break;
         case answerTypes.WRONG:
-          this.result.answerPoints += 0;
+          this._result.answerPoints += 0;
           break;
         default:
           throw new Error(`Unknown answer type`)
       }
     });
-    this.result.livesPoints = this.lives * 50;
-    this.result.totalPoints = this.result.answerPoints + this.result.livesPoints + this.result.speedPoints - this.result.slowPoints;
+    this._result.livesPoints = this.lives * 50;
+    this._result.totalPoints = this._result.answerPoints + this._result.livesPoints + this._result.speedPoints - this._result.slowPoints;
   }
 
   get stats() {
     let answers = new Array(10);
     for (let i = 0; i < answers.length; i++) {
-      answers[i] = (this.answers[i]) ? this.answers[i] : `unknown`;
+      answers[i] = (this._answers[i]) ? this._answers[i] : `unknown`;
     }
     return answers;
   }
 
   get results() {
-    return this.result;
+    return this._result;
   }
 
   init() {
     this.timer = 30;
     this.current = 0;
     this.lives = 3;
-    this.answers = [];
-    this.result = {};
-    this.result.text = ``;
-    this.result.answerPoints = 0;
-    this.result.speedPoints = 0;
-    this.result.livesPoints = 0;
-    this.result.slowPoints = 0;
-    this.result.totalPoints = 0;
+    this._answers = [];
+    this._result = {};
+    this._result.text = ``;
+    this._result.answerPoints = 0;
+    this._result.speedPoints = 0;
+    this._result.livesPoints = 0;
+    this._result.slowPoints = 0;
+    this._result.totalPoints = 0;
   }
   set answer(answer) {
-    this.answers.push(answer);
+    this._answers.push(answer);
   }
   wrongAnswer() {
     this.lives--;
