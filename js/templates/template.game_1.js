@@ -1,6 +1,5 @@
 import actionView from './components/component.action';
 import statsBar from './components/component.statsbar';
-import gameState from '../module.game-state';
 import AbstractView from '../module.abstract-view';
 
 export default class FirstGameType extends AbstractView {
@@ -15,7 +14,7 @@ export default class FirstGameType extends AbstractView {
         ${actionView(it)}
       </div>`).join(``)}
     </form>
-    ${statsBar(gameState)}
+    ${statsBar(this.data.state)}
   </div>`;
   }
   bind() {

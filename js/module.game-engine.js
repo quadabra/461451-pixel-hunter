@@ -25,7 +25,7 @@ export default class GameScreen {
     const question1 = this.task.tasks[1].type;
     if (answer0 && answer1) {
       if (question0 === answer0 && question1 === answer1) {
-        this.model.answer(gameData.answerTypes.CORRECT);
+        this.model.answer(this.makeAnswer(gameData.answerTypes.CORRECT, this.timer.getTime()));
         this.goNextLvl();
       } else {
         this.model.answer(gameData.answerTypes.WRONG);
@@ -38,7 +38,7 @@ export default class GameScreen {
     this.timer.stop();
     const question0 = this.task.tasks[0].type;
     if (question0 === answer) {
-      this.model.answer(gameData.answerTypes.CORRECT);
+      this.model.answer(this.makeAnswer(gameData.answerTypes.CORRECT, this.timer.getTime()));
       this.goNextLvl();
     } else {
       this.model.answer(gameData.answerTypes.WRONG);
@@ -79,12 +79,12 @@ export default class GameScreen {
       this.timerStart();
     } else {
       this.model.calcResults();
-      Application.showResults();
+      Application.showResults(this.model.results());
     }
   }
 
   renderHeader() {
-    return new HeaderView(this.model).element;
+    return new HeaderView(this.model, this.reset.bind(this)).element;
   }
 
   updateHeader() {
@@ -137,12 +137,17 @@ export default class GameScreen {
   }
 
   currentTask() {
-    this.task = gameData.gameScreensData[this.model.current]
+    this.task = gameData.gameScreensData[this.model.current];
+    this.task.state = this.model.statsBar();
     return this.task;
   }
 
   timerStart() {
     this.timer.configure(this.model.timeStart(), this.game.querySelector('.game__timer'), this.timeOverCallback.bind(this)).start();
+  }
+
+  reset() {
+    Application.showGreeting();
   }
 
   startLevel() {

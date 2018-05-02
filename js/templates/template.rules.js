@@ -31,6 +31,8 @@ export default class RulesView extends AbstractView {
     });
 
     this.submit.addEventListener(`click`, () => this.onStartGame(this.input.value));
+    this.back = this.element.querySelector(`.back`);
+    this.back.addEventListener(`click`, () => this.onShowGreeting());
     super.bind();
   }
 }

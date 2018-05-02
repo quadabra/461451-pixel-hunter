@@ -4,12 +4,13 @@ import timer from './components/component.timer';
 import lives from './components/component.lives';
 
 export default class HeaderView extends AbstractView {
-  constructor(model) {
+  constructor(model, callback) {
     super();
     this.model = model;
     this.back = back();
     this.timer = timer(this.model.timer);
     this.lives = lives(this.model.lives);
+    this.callback = callback;
   }
   template() {
     return `
@@ -27,6 +28,7 @@ export default class HeaderView extends AbstractView {
   }
 
   bind() {
-
+    this.actionElements = this.element.querySelectorAll(`.back`);
+    super.bind();
   }
 }

@@ -28,6 +28,7 @@ export default class Application {
   static showRules() {
     const rulesView = new RulesView();
     rulesView.onStartGame = () => this.startGame();
+    rulesView.onShowGreeting = () => this.showGreeting();
     changeView(rulesView.element);
     this.currentView = rulesView;
   }
@@ -43,7 +44,10 @@ export default class Application {
     gameView.showStats = () => this.showResults();
     changeView(gameView.startLevel());
   }
-  static showResults() {
-    changeView(new StatsView().element);
+  static showResults(data) {
+    const statsView = new StatsView(data).element;
+    changeView(statsView);
+    statsView.onShowGreeting = () => this.showGreeting();
+    this.currentView = statsView;
   }
 }

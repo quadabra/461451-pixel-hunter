@@ -32,9 +32,11 @@ export default class GameModel {
     });
     this._result.livesPoints = this.lives * 50;
     this._result.totalPoints = this._result.answerPoints + this._result.livesPoints + this._result.speedPoints - this._result.slowPoints;
+    this._result.lives = this.lives;
+    this._result.stats = this.statsBar();
   }
 
-  get stats() {
+  statsBar() {
     let answers = new Array(10);
     for (let i = 0; i < answers.length; i++) {
       answers[i] = (this._answers[i]) ? this._answers[i] : `unknown`;
@@ -42,7 +44,7 @@ export default class GameModel {
     return answers;
   }
 
-  get results() {
+  results() {
     return this._result;
   }
 
@@ -65,6 +67,7 @@ export default class GameModel {
     this._answers = [];
     this._result = {};
     this._result.text = ``;
+    this._result.stats = [];
     this._result.answerPoints = 0;
     this._result.speedPoints = 0;
     this._result.livesPoints = 0;
@@ -74,8 +77,5 @@ export default class GameModel {
   answer(answer) {
     this._answers.push(answer);
     if (answer === answerTypes.WRONG) this.lives--;
-  }
-  wrongAnswer() {
-    this.lives--;
   }
 }

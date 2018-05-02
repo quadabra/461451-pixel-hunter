@@ -1,7 +1,7 @@
-export default (state) => (
+export default (data) => (
   `<div class="stats">
     <ul class="stats">
-      ${state.getStats().map((it) =>
+      ${data.map((it) =>
     `<li class="stats__result stats__result--${it}"></li>`
   ).join(``)}
     </ul>
