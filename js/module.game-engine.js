@@ -4,6 +4,7 @@ import SecondGameType from './templates/template.game_2';
 import ThirdGameType from './templates/template.game_3';
 import HeaderView from './templates/template.game-header';
 import Application from './module.application';
+import Timer from './module.game-timer';
 
 export default class GameScreen {
   constructor(model) {
@@ -113,7 +114,13 @@ export default class GameScreen {
     }
   }
 
+  timeOverCallback() {
+    this.model.answer(`wrong`);
+    this.goNextLvl();
+  }
+
   startLevel() {
+    new Timer().configure(30, this.game.querySelector('.game__timer'), this.timeOverCallback.bind(this)).start();
     return this.game;
   }
 }

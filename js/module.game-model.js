@@ -72,7 +72,7 @@ export default class GameModel {
   }
   answer(answer) {
     this._answers.push(answer);
-    if (answer === `wrong`) this.lives--;
+    if (answer === answerTypes.WRONG) this.lives--;
   }
   wrongAnswer() {
     this.lives--;
