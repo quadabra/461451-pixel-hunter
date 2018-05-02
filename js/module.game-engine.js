@@ -1,6 +1,5 @@
 import gameData from './module.game-data';
 import gameState from './module.game-state';
-import GameModel from './module.game-model';
 import FirstGameType from './templates/template.game_1';
 import SecondGameType from './templates/template.game_2';
 import ThirdGameType from './templates/template.game_3';
@@ -9,10 +8,11 @@ import Application from './module.application';
 
 export default class GameView {
   constructor(model) {
-    this.round = gameState.current;
+    this.model = gameState;
+    this.round = this.model.current;
     this.task = gameData.gameScreensData[this.round];
 
-    this.header = GameView.renderHeader();
+    this.header = this.renderHeader();
     this.screen = this.renderScreen();
 
     this.game = document.createDocumentFragment();
@@ -20,42 +20,42 @@ export default class GameView {
     this.game.appendChild(this.screen);
   }
 
-  static firstGameTypeCallback(answer0, answer1) {
+  firstGameTypeCallback(answer0, answer1) {
     const question0 = gameData.gameScreensData[gameState.current].tasks[0].type;
     const question1 = gameData.gameScreensData[gameState.current].tasks[1].type;
     if (answer0 && answer1) {
       if (question0 === answer0 && question1 === answer1) {
-        gameState.setStats(`correct`);
-        GameView.goNextLvl();
+        this.model.setStats(`correct`);
+        this.goNextLvl();
       } else {
-        gameState.setStats(`wrong`);
-        gameState.setLives();
-        GameView.goNextLvl();
+        this.model.setStats(`wrong`);
+        this.model.setLives();
+        this.goNextLvl();
       }
     }
   }
 
-  static secondGameTypeCallBack(answer) {
+  secondGameTypeCallBack(answer) {
     const question0 = gameData.gameScreensData[gameState.current].tasks[0].type;
     if (question0 === answer) {
-      gameState.setStats(`correct`);
-      GameView.goNextLvl();
+      this.model.setStats(`correct`);
+      this.goNextLvl();
     } else {
-      gameState.setStats(`wrong`);
-      gameState.setLives();
-      GameView.goNextLvl();
+      this.model.setStats(`wrong`);
+      this.model.setLives();
+      this.goNextLvl();
     }
   }
 
-  static thirdGameTypeCallback(answer) {
+  thirdGameTypeCallback(answer) {
     let tasks = gameData.gameScreensData[gameState.current].tasks;
     if (tasks[answer].type === `paint`) {
-      gameState.setStats(`correct`);
-      GameView.goNextLvl();
+      this.model.setStats(`correct`);
+      this.goNextLvl();
     } else {
-      gameState.setStats(`wrong`);
-      gameState.setLives();
-      GameView.goNextLvl();
+      this.model.setStats(`wrong`);
+      this.model.setLives();
+      this.goNextLvl();
     }
   }
 
@@ -71,35 +71,35 @@ export default class GameView {
   //   }
   // }
 
-  static goNextLvl() {
-    gameState.current++;
-    if (gameState.current < 10 && gameState.lives > 0) {
+  goNextLvl() {
+    this.model.current++;
+    if (this.model.current < 10 && this.model.lives > 0) {
       Application.startGame();
     } else {
-      gameState.getResult();
+      this.model.getResult();
       Application.showResults();
     }
   }
 
-  static renderHeader() {
-    return new GameHeader().element;
+  renderHeader() {
+    return new GameHeader(this.model).element;
   }
 
   firstTypeGame() {
     const task = new FirstGameType(this.task);
-    task.onAnswer = GameView.firstGameTypeCallback;
+    task.onAnswer = this.firstGameTypeCallback;
     return task.element;
   }
 
   secondTypeGame() {
     const task = new SecondGameType(this.task);
-    task.onAnswer = GameView.secondGameTypeCallBack;
+    task.onAnswer = this.secondGameTypeCallBack;
     return task.element;
   }
 
   thirdTypeGame() {
     const task = new ThirdGameType(this.task);
-    task.onAnswer = GameView.thirdGameTypeCallback;
+    task.onAnswer = this.thirdGameTypeCallback;
     return task.element;
   }
 

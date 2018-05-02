@@ -46,6 +46,7 @@ export default class GameModel {
   }
 
   init() {
+    this.timer = 30;
     this.screen = 0;
     this._state = {};
     this._state.answers = [];

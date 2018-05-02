@@ -1,7 +1,7 @@
 const state = {
   name: ``,
   current: 0,
-  timer: `NN`,
+  timer: `30`,
   lives: 3,
   stats: [],
   result: {

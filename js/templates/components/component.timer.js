@@ -1,2 +1,2 @@
-export default () => (
-  `<h1 class="game__timer">30</h1>`);
+export default (time) => (
+  `<h1 class="game__timer">${time}</h1>`);

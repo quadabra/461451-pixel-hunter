@@ -3,6 +3,7 @@ import GreetingView from './templates/template.greeting';
 import RulesView from './templates/template.rules';
 import GameView from './module.game-engine';
 import StatsView from "./templates/template.stats";
+import GameModel from './module.game-model';
 
 const main = document.querySelector(`.central`);
 
