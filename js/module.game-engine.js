@@ -56,8 +56,8 @@ export default class GameScreen {
   }
 
   goNextLvl() {
-    this.round++;
-    if (this.model.current < 10 && this.model.lives > 0) {
+    this.model.nextRound();
+    if (this.model.canContinue()) {
       this.updateGame();
     } else {
       this.model.calcResults();

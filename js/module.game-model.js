@@ -49,6 +49,14 @@ export default class GameModel {
     return this._result;
   }
 
+  nextRound() {
+    this.current++;
+  }
+
+  canContinue() {
+    return (this.current < 10 && this.lives > 0)
+  }
+
   init() {
     this.timer = 30;
     this.current = 0;
