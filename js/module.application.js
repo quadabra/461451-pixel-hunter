@@ -36,10 +36,12 @@ export default class Application {
       this.currentView.clear();
     }
     this.currentView = null;
-    const gameView = new GameScreen();
+    const playerName = `zzz`;
+    const model = new GameModel(playerName);
+    const gameView = new GameScreen(model);
     gameView.showNextLvl = () => this.startGame();
     gameView.showStats = () => this.showResults();
-    changeView(new GameScreen().startLevel());
+    changeView(gameView.startLevel());
   }
   static showResults() {
     changeView(new StatsView().element);

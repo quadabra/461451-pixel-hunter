@@ -62,8 +62,9 @@ export default class GameModel {
     this._result.slowPoints = 0;
     this._result.totalPoints = 0;
   }
-  set answer(answer) {
+  answer(answer) {
     this._answers.push(answer);
+    if (answer === `wrong`) this.lives--;
   }
   wrongAnswer() {
     this.lives--;

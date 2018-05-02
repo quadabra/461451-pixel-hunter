@@ -1,16 +1,13 @@
 import gameData from './module.game-data';
-import gameState from './module.game-state';
 import FirstGameType from './templates/template.game_1';
 import SecondGameType from './templates/template.game_2';
 import ThirdGameType from './templates/template.game_3';
 import GameHeader from './templates/template.game-header';
 import Application from './module.application';
-import GameModel from './module.game-model';
 
 export default class GameScreen {
-  constructor() {
-    this.name = `player`;
-    this.model = new GameModel(this.name);
+  constructor(model) {
+    this.model = model;
     this.round = this.model.current;
     this.task = gameData.gameScreensData[this.round];
 
@@ -61,22 +58,10 @@ export default class GameScreen {
     }
   }
 
-  // showNextLvl(){}
-  // showStats(){}
-  // goNextLvl() {
-  //   gameState.current++;
-  //   if (gameState.current < 10 && gameState.lives > 0) {
-  //     this.showNextLvl();
-  //   } else {
-  //     gameState.getResult();
-  //     this.showStats();
-  //   }
-  // }
-
   goNextLvl() {
     this.model.current++;
     if (this.model.current < 10 && this.model.lives > 0) {
-      this.startLevel();
+      this.updateGame();
     } else {
       this.model.getResult();
       Application.showResults();
@@ -85,6 +70,19 @@ export default class GameScreen {
 
   renderHeader() {
     return new GameHeader(this.model).element;
+  }
+
+  updateHeader() {
+    const header = this.renderHeader();
+    this.game.replaceChild(header, this.header);
+    this.header = header;
+  }
+
+  updateGame() {
+    this.updateHeader();
+    const content = this.renderScreen();
+    this.game.replaceChild(content, this.screen);
+    this.screen = content;
   }
 
   firstTypeGame() {
