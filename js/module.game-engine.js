@@ -3,7 +3,6 @@ import FirstGameType from './templates/template.game_1';
 import SecondGameType from './templates/template.game_2';
 import ThirdGameType from './templates/template.game_3';
 import HeaderView from './templates/template.game-header';
-import Application from './module.application';
 import Timer from './module.game-timer';
 
 export default class GameScreen {
@@ -48,9 +47,10 @@ export default class GameScreen {
 
   thirdGameTypeCallback(answer) {
     this.timer.stop();
+    const time = this.timer.getTime();
     let tasks = this.task.tasks;
     if (tasks[answer].type === gameData.imageTypes.PAINT) {
-      this.model.answer(this.makeAnswer(gameData.answerTypes.CORRECT, this.timer.getTime()));
+      this.model.answer(this.makeAnswer(gameData.answerTypes.CORRECT, time));
       this.goNextLvl();
     } else {
       this.model.answer(gameData.answerTypes.WRONG);
@@ -60,13 +60,12 @@ export default class GameScreen {
 
   makeAnswer(type, time) {
     if (type === gameData.answerTypes.CORRECT) {
-      switch (time) {
-        case time > 20:
-          return gameData.answerTypes.FAST;
-        case time < 10:
-          return gameData.answerTypes.SLOW;
-        default:
-          return type;
+      if (time > 20) {
+        return gameData.answerTypes.FAST;
+      } else if (time < 10) {
+        return gameData.answerTypes.SLOW;
+      } else {
+        return type;
       }
     } else {
       return gameData.answerTypes.WRONG;
@@ -81,7 +80,7 @@ export default class GameScreen {
       this.timerStart();
     } else {
       this.model.calcResults();
-      Application.showResults(this.model.results());
+      this.onShowStats(this.model.results());
     }
   }
 
@@ -140,7 +139,9 @@ export default class GameScreen {
 
   currentTask() {
     this.task = gameData.gameScreensData[this.model.current];
-    this.task.state = this.model.statsBarData();
+    if (this.task) {
+      this.task.state = this.model.statsBarData();
+    }
     return this.task;
   }
 
@@ -149,7 +150,7 @@ export default class GameScreen {
   }
 
   reset() {
-    Application.showGreeting();
+    this.onShowGreeting();
   }
 
   startLevel() {

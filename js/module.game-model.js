@@ -33,6 +33,7 @@ export default class GameModel {
     this._result.livesPoints = this.lives * 50;
     this._result.totalPoints = this._result.answerPoints + this._result.livesPoints + this._result.speedPoints - this._result.slowPoints;
     this._result.lives = this.lives;
+    this._result.name = this.user;
     this._result.stats = this.statsBarData();
   }
 

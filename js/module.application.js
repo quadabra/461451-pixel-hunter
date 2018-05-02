@@ -27,21 +27,20 @@ export default class Application {
   }
   static showRules() {
     const rulesView = new RulesView();
-    rulesView.onStartGame = () => this.startGame();
+    rulesView.onStartGame = (name) => this.startGame(name);
     rulesView.onShowGreeting = () => this.showGreeting();
     changeView(rulesView.element);
     this.currentView = rulesView;
   }
-  static startGame() {
+  static startGame(name) {
     if (this.currentView) {
       this.currentView.clear();
     }
     this.currentView = null;
-    const playerName = `zzz`;
-    const model = new GameModel(playerName);
+    const model = new GameModel(name);
     const gameView = new GameScreen(model);
-    gameView.showNextLvl = () => this.startGame();
-    gameView.showStats = () => this.showResults();
+    gameView.onShowStats = (data) => this.showResults(data);
+    gameView.onShowGreeting = () => this.showGreeting();
     changeView(gameView.startLevel());
   }
   static showResults(data) {
