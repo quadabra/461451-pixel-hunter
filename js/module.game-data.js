@@ -1,13 +1,13 @@
 const gameData = {};
 
 const gameTypes = {
-  TWO_IMAGES: 0,
-  ONE_IMAGE: 1,
-  FIND_IMAGE: 2
+  TWO_IMAGES: `two-of-two`,
+  ONE_IMAGE: `tinder-like`,
+  FIND_IMAGE: `one-of-three`
 };
 
 const imageTypes = {
-  PAINT: `paint`,
+  PAINT: `painting`,
   PHOTO: `photo`
 };
 

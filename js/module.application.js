@@ -4,6 +4,7 @@ import RulesView from './templates/template.rules';
 import GameScreen from './module.game-engine';
 import StatsView from "./templates/template.stats";
 import GameModel from './module.game-model';
+import Loader from './module.loader';
 
 const main = document.querySelector(`.central`);
 
@@ -21,14 +22,13 @@ export default class Application {
   }
 
   static showGreeting() {
-    this.currentView.clear();
+    new Loader().loadData();
     const greetingView = new GreetingView();
     greetingView.onShowRules = () => this.showRules();
     changeView(greetingView.element);
     this.currentView = greetingView;
   }
   static showRules() {
-    this.currentView.clear();
     const rulesView = new RulesView();
     rulesView.onStartGame = (name) => this.startGame(name);
     rulesView.onShowGreeting = () => this.showGreeting();
