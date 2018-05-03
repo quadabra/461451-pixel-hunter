@@ -19,6 +19,7 @@ export default class Application {
     changeView(introView.element);
     this.currentView = introView;
   }
+
   static showGreeting() {
     this.currentView.clear();
     const greetingView = new GreetingView();
@@ -44,9 +45,9 @@ export default class Application {
     this.currentView = gameView;
   }
   static showResults(data) {
-    const statsView = new StatsView(data).element;
-    statsView.onStartGame = (name) => this.startGame(name);
-    changeView(statsView);
+    const statsView = new StatsView(data);
+    statsView.onRewind = () => this.showGreeting();
+    changeView(statsView.element);
     this.currentView = statsView;
   }
 }

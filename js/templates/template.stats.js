@@ -54,7 +54,7 @@ export default class StatsView extends AbstractView {
   }
   bind() {
     this.back = this.element.querySelector(`.back`);
-    this.back.addEventListener(`click`, () => this.onStartGame(this.data.name));
+    this.back.addEventListener(`click`, () => this.onRewind());
     super.bind();
   }
 }
