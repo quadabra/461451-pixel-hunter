@@ -9,7 +9,7 @@ const status = (response) => {
   }
 };
 
-const convertIncoming = function(data) {
+const convertIncoming = function (data) {
   return data.map((it) => {
     let screen = {};
     screen.gameType = it.type;
