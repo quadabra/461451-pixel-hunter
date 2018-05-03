@@ -24,7 +24,7 @@ export default class GameScreen {
     const question1 = this.task.tasks[1].type;
     if (answer0 && answer1) {
       if (question0 === answer0 && question1 === answer1) {
-        this.model.answer(this.makeAnswer(gameData.answerTypes.CORRECT, this.timer.getTime()));
+        this.model.answer(GameScreen.makeAnswer(gameData.answerTypes.CORRECT, this.timer.getTime()));
         this.goNextLvl();
       } else {
         this.model.answer(gameData.answerTypes.WRONG);
@@ -37,7 +37,7 @@ export default class GameScreen {
     this.timer.stop();
     const question0 = this.task.tasks[0].type;
     if (question0 === answer) {
-      this.model.answer(this.makeAnswer(gameData.answerTypes.CORRECT, this.timer.getTime()));
+      this.model.answer(GameScreen.makeAnswer(gameData.answerTypes.CORRECT, this.timer.getTime()));
       this.goNextLvl();
     } else {
       this.model.answer(gameData.answerTypes.WRONG);
@@ -49,8 +49,18 @@ export default class GameScreen {
     this.timer.stop();
     const time = this.timer.getTime();
     let tasks = this.task.tasks;
-    if (tasks[answer].type === gameData.imageTypes.PAINT) {
-      this.model.answer(this.makeAnswer(gameData.answerTypes.CORRECT, time));
+    let photos = 0;
+    let paintings = 0;
+    tasks.forEach((it) => {
+      if (it.type === gameData.imageTypes.PAINT) {
+        paintings++;
+      } else {
+        photos++;
+      }
+    });
+    const question = (paintings > photos) ? (gameData.imageTypes.PAINT) : (gameData.imageTypes.PHOTO);
+    if (tasks[answer].type === question) {
+      this.model.answer(GameScreen.makeAnswer(gameData.answerTypes.CORRECT, time));
       this.goNextLvl();
     } else {
       this.model.answer(gameData.answerTypes.WRONG);
@@ -58,7 +68,7 @@ export default class GameScreen {
     }
   }
 
-  makeAnswer(type, time) {
+  static makeAnswer(type, time) {
     if (type === gameData.answerTypes.CORRECT) {
       if (time > 20) {
         return gameData.answerTypes.FAST;

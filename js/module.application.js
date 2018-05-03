@@ -22,7 +22,7 @@ export default class Application {
   }
 
   static showGreeting() {
-    new Loader().loadData();
+    Loader.loadData();
     const greetingView = new GreetingView();
     greetingView.onShowRules = () => this.showRules();
     changeView(greetingView.element);

@@ -14,13 +14,15 @@ const convertIncoming = function(data) {
     let screen = {};
     screen.gameType = it.type;
     screen.text = it.question;
-    screen.tasks = it.map((item, i) =>{
+    screen.tasks = it.answers.map((item, i) =>{
       let task = {};
-      task.image = item.image;
-      task.name = `question ` + i;
-      task.alt = `Option ` + i;
-      task.type = it.type;
+      task.image = item.image.url;
+      task.name = `question` + (i + 1);
+      task.alt = `Option ` + (i + 1);
+      task.type = item.type;
+      return task;
     });
+    return screen;
   });
 };
 
