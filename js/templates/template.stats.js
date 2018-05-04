@@ -1,3 +1,4 @@
+import gameData from '../module.game-data';
 import AbstractView from '../module.abstract-view';
 import Loader from '../module.loader';
 import backView from './components/component.go-back';
@@ -7,7 +8,6 @@ export default class StatsView extends AbstractView {
   constructor(data) {
     super();
     this.stats = data;
-    this.oldStats = null;
     this.data = this.getSummary();
   }
   template() {
@@ -20,17 +20,14 @@ export default class StatsView extends AbstractView {
   </div>`;
   };
 
-  saveOldStats(data) {
-    this.oldStats = data;
-  }
-
   getSummary() {
-    Loader.loadStats(this.stats.name).then(this.saveOldStats);
+    const oldData = Loader.loadStats();
     const allData = [];
     allData.push(this.stats);
-    if (this.oldStats) {
-      allData.push(...this.oldStats);
-    }
+    oldData.forEach((it) => {
+      allData.push(it);
+    });
+    console.log(oldData);
     console.log(allData);
     return allData;
   }

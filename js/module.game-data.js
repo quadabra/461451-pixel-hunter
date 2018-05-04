@@ -21,7 +21,7 @@ const answerTypes = {
 gameData.gameType = gameTypes;
 gameData.imageTypes = imageTypes;
 gameData.answerTypes = answerTypes;
-
+gameData.gameOldStats = [];
 gameData.gameScreensData = [
   {
     gameType: gameTypes.TWO_IMAGES,

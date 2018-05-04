@@ -31,6 +31,10 @@ const saveData = function (data) {
   gameData.gameScreensData = data;
 };
 
+const saveStatsData = function (data) {
+  gameData.gameOldStats = data;
+};
+
 const toJSON = (data) => data.json();
 
 export default class Loader {
@@ -51,7 +55,9 @@ export default class Loader {
     };
     return fetch(`${SERVER_URL}/stats/:${APP_ID}-:${data.name}`, settings).then(status);
   }
-  static loadStats(name) {
-    return fetch(`${SERVER_URL}/stats/:${APP_ID}-:${name}`).then(status).then(toJSON);
+  static loadStats() {
+    return fetch(`https://es.dump.academy/pixel-hunter/stats/:461451-:da`).
+    then(status).
+    then(toJSON);
   }
 }
