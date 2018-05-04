@@ -5,6 +5,8 @@ import GameScreen from './module.game-engine';
 import StatsView from "./templates/template.stats";
 import GameModel from './module.game-model';
 import Loader from './module.loader';
+import ErrorView from './templates/template.error';
+import LoadingView from './templates/template.loading';
 
 const main = document.querySelector(`.central`);
 
@@ -14,8 +16,20 @@ const changeView = (view) => {
 };
 
 export default class Application {
+  static showError(error) {
+    const errorView = new ErrorView(error);
+    changeView(errorView.element);
+    this.currentView = errorView;
+  }
+
+  static start() {
+    const loadingView = new LoadingView();
+    changeView(loadingView.element);
+    Loader.loadData().then(Application.showIntro).catch(Application.showError);
+    this.currentView = loadingView;
+  }
+
   static showIntro() {
-    Loader.loadData();
     const introView = new IntroView();
     introView.onShowGreeting = () => this.showGreeting();
     changeView(introView.element);
