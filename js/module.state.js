@@ -1,16 +1,25 @@
-export default class State {
-  static statusBar(state, data) {
-    let statusColor = `transparent`;
-    if (state === `error`) {
-      statusColor = `red`;
-    }
+import AbstractView from './module.abstract-view';
+
+export default class State extends AbstractView {
+  constructor(error) {
+    super();
+    this.error = error;
+    this.state = null;
+  }
+
+  template() {
     return `
-<div style="position: fixed; top: 0; left: 0; width: 100%; background-color: ${statusColor}">
-<div style="margin: 0 auto">${data}</div>
+<div style="position: fixed; top: 0; left: 0; width: 100%;">
+<div style="margin: 0 auto">Loading... ${this.state}</div>
 </div>`;
   }
 
-  static showLoading() {
-
+  done() {
+    this.state = `done`;
   }
+
+  errorMessage(error) {
+    this.state = `Произошла ошибка` + this.error.message;
+  }
+
 }

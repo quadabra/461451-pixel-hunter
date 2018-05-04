@@ -15,6 +15,7 @@ const changeView = (view) => {
 
 export default class Application {
   static showIntro() {
+    Loader.loadData();
     const introView = new IntroView();
     introView.onShowGreeting = () => this.showGreeting();
     changeView(introView.element);
@@ -22,7 +23,6 @@ export default class Application {
   }
 
   static showGreeting() {
-    Loader.loadData();
     const greetingView = new GreetingView();
     greetingView.onShowRules = () => this.showRules();
     changeView(greetingView.element);
