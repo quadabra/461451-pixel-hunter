@@ -24,7 +24,7 @@ export default class Application {
   static start() {
     const loadingView = new LoadingView();
     changeView(loadingView.element);
-    Loader.loadData().then(Application.showIntro()).catch(Application.showError);
+    Loader.loadData().then(Application.showIntro).catch(Application.showError);
   }
 
   static showIntro() {

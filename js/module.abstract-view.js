@@ -32,11 +32,4 @@ export default class AbstractView {
       }
     }
   }
-  clear() {
-    if (this.actionElements) {
-      for (let element of this.actionElements) {
-        element.removeEventListener(`click`, this.callback);
-      }
-    }
-  }
 }

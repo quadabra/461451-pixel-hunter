@@ -1,5 +1,6 @@
 import gameData from './module.game-data';
 const SERVER_URL = `https://es.dump.academy/pixel-hunter`;
+const APP_ID = `461451`;
 
 const status = (response) => {
   if (response.ok) {
@@ -39,5 +40,11 @@ export default class Loader {
         then(toJSON).
         then(convertIncoming).
         then(saveData);
+  }
+  static saveStats(data) {
+    return fetch(`${SERVER_URL}/stats/:${APP_ID}-:${data.name}`);
+  }
+  static loadStats() {
+
   }
 }
