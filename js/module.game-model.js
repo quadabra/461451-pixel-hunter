@@ -35,6 +35,7 @@ export default class GameModel {
     this._result.lives = this.lives;
     this._result.name = this.user;
     this._result.stats = this.statsBarData();
+    this._result.date = new Date();
   }
 
   statsBarData() {

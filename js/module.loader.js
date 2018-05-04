@@ -51,7 +51,7 @@ export default class Loader {
     };
     return fetch(`${SERVER_URL}/stats/:${APP_ID}-:${data.name}`, settings).then(status);
   }
-  static loadStats() {
-
+  static loadStats(name) {
+    return fetch(`${SERVER_URL}/stats/:${APP_ID}-:${name}`).then(status).then(toJSON);
   }
 }
