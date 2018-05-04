@@ -36,4 +36,4 @@ export default (data, number) => (`
 <td colspan="5" class="result__total  result__total--final">${data.totalPoints}</td>
   </tr>
   </table>`
-)
+);
