@@ -58,7 +58,7 @@ export default class GameScreen {
         photos++;
       }
     });
-    const question = (paintings > photos) ? (gameData.imageTypes.PAINT) : (gameData.imageTypes.PHOTO);
+    const question = (paintings > photos) ? (gameData.imageTypes.PHOTO) : (gameData.imageTypes.PAINT);
     if (tasks[answer].type === question) {
       this.model.answer(GameScreen.makeAnswer(gameData.answerTypes.CORRECT, time));
       this.goNextLvl();

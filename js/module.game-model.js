@@ -9,7 +9,7 @@ export default class GameModel {
   }
 
   calcResults() {
-    this._result.text = (this.lives > 0) ? `Победа!` : `FAIL`;
+    this._result.text = (this.lives >= 0) ? `Победа!` : `FAIL`;
     this._answers.forEach((it) => {
       switch (it) {
         case answerTypes.CORRECT:
@@ -54,7 +54,7 @@ export default class GameModel {
   }
 
   canContinue() {
-    return (this.current < 10 && this.lives > 0);
+    return (this.current < 10 && this.lives >= 0);
   }
 
   timeStart() {
