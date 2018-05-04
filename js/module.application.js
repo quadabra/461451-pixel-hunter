@@ -24,7 +24,7 @@ export default class Application {
   static start() {
     const loadingView = new LoadingView();
     changeView(loadingView.element);
-    Loader.loadData().then(Application.showIntro).catch(Application.showError);
+    Loader.loadData().then(() => this.showIntro()).catch(this.showError);
   }
 
   static showIntro() {
@@ -47,7 +47,7 @@ export default class Application {
   static startGame(name) {
     const model = new GameModel(name);
     const gameView = new GameScreen(model);
-    gameView.onShowStats = (data) => Loader.saveStats(data).then(this.showResults(data));
+    gameView.onShowStats = (data) => Loader.saveStats(data).then(() => this.showResults(data)).catch(this.showError) ;
     gameView.onShowGreeting = () => this.showGreeting();
     changeView(gameView.startLevel());
   }
