@@ -11,4 +11,8 @@ export default class LoadingView extends AbstractView {
 <div style="margin: 0 auto">Loading...</div>
 </div>`;
   }
+  bind() {
+    setTimeout(()=>{}, 2000);
+    super.bind();
+  }
 }
