@@ -42,7 +42,14 @@ export default class Loader {
         then(saveData);
   }
   static saveStats(data) {
-    return fetch(`${SERVER_URL}/stats/:${APP_ID}-:${data.name}`);
+    const settings = {
+      body: JSON.stringify(data),
+      headers: {
+        'Content-Type': `application/json`
+      },
+      method: `POST`
+    };
+    return fetch(`${SERVER_URL}/stats/:${APP_ID}-:${data.name}`, settings).then(status);
   }
   static loadStats() {
 
