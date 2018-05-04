@@ -18,7 +18,7 @@ export default class State extends AbstractView {
     this.state = `done`;
   }
 
-  errorMessage(error) {
+  errorMessage() {
     this.state = `Произошла ошибка` + this.error.message;
   }
 

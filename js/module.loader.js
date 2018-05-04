@@ -1,5 +1,4 @@
 import gameData from './module.game-data';
-import State from './module.state';
 const SERVER_URL = `https://es.dump.academy/pixel-hunter`;
 
 const status = (response) => {
@@ -36,9 +35,9 @@ const toJSON = (data) => data.json();
 export default class Loader {
   static loadData() {
     return fetch(`${SERVER_URL}/questions`).
-    then(status).
-    then(toJSON).
-    then(convertIncoming).
-    then(saveData);
+        then(status).
+        then(toJSON).
+        then(convertIncoming).
+        then(saveData);
   }
 }
