@@ -24,7 +24,6 @@ export default class Application {
   static start() {
     const loadingView = new LoadingView();
     changeView(loadingView.element);
-    this.currentView = loadingView;
     Loader.loadData().then(Application.showIntro()).catch(Application.showError);
   }
 
@@ -32,35 +31,29 @@ export default class Application {
     const introView = new IntroView();
     introView.onShowGreeting = () => this.showGreeting();
     changeView(introView.element);
-    this.currentView = introView;
   }
 
   static showGreeting() {
     const greetingView = new GreetingView();
     greetingView.onShowRules = () => this.showRules();
     changeView(greetingView.element);
-    this.currentView = greetingView;
   }
   static showRules() {
     const rulesView = new RulesView();
     rulesView.onStartGame = (name) => this.startGame(name);
     rulesView.onShowGreeting = () => this.showGreeting();
     changeView(rulesView.element);
-    this.currentView = rulesView;
   }
   static startGame(name) {
-    this.currentView.clear();
     const model = new GameModel(name);
     const gameView = new GameScreen(model);
     gameView.onShowStats = (data) => this.showResults(data);
     gameView.onShowGreeting = () => this.showGreeting();
     changeView(gameView.startLevel());
-    this.currentView = gameView;
   }
   static showResults(data) {
     const statsView = new StatsView(data);
     statsView.onRewind = () => this.showGreeting();
     changeView(statsView.element);
-    this.currentView = statsView;
   }
 }
