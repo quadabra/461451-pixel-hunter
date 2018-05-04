@@ -17,17 +17,15 @@ const changeView = (view) => {
 
 export default class Application {
   static showError(error) {
-    this.currentView.clear();
     const errorView = new ErrorView(error);
     changeView(errorView.element);
-    this.currentView = errorView;
   }
 
   static start() {
     const loadingView = new LoadingView();
     changeView(loadingView.element);
-    Loader.loadData().then(Application.showIntro()).catch(Application.showError);
     this.currentView = loadingView;
+    Loader.loadData().then(Application.showIntro()).catch(Application.showError);
   }
 
   static showIntro() {
