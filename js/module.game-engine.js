@@ -70,9 +70,9 @@ export default class GameScreen {
 
   static makeAnswer(type, time) {
     if (type === gameData.answerTypes.CORRECT) {
-      if (time > 20) {
+      if (time > gameData.timeToAnswer.NORMAL) {
         return gameData.answerTypes.FAST;
-      } else if (time < 10) {
+      } else if (time < gameData.timeToAnswer.SLOW) {
         return gameData.answerTypes.SLOW;
       } else {
         return type;

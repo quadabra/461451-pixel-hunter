@@ -31,7 +31,7 @@ export default class GameModel {
       }
     });
     this._result.lives = (this.lives >= 0) ? (this.lives) : (0);
-    this._result.livesPoints = this._result.lives * 50;
+    this._result.livesPoints = this._result.lives * gameData.answerPrices.LIVES;
     this._result.totalPoints = this._result.answerPoints + this._result.livesPoints + this._result.speedPoints + this._result.slowPoints;
     this._result.name = this.user;
     this._result.stats = this.statsBarData();
@@ -55,7 +55,7 @@ export default class GameModel {
   }
 
   canContinue() {
-    return (this.current < 10 && this.lives >= 0);
+    return (this.current < gameData.gameScreensData.length && this.lives >= this.die);
   }
 
   timeStart() {
@@ -63,9 +63,10 @@ export default class GameModel {
   }
 
   init() {
-    this.timer = 30;
-    this.current = 0;
-    this.lives = 3;
+    this.timer = gameData.initData.TIMER;
+    this.current = gameData.initData.START_SCREEN;
+    this.lives = gameData.initData.LIVES;
+    this.die = gameData.initData.DIE;
     this._answers = [];
     this._result = {};
     this._result.text = ``;

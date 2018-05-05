@@ -15,11 +15,13 @@ export default class HeaderView extends AbstractView {
   template() {
     return `
   <header class="header">
-    ${this.header().join(``)}
+    ${this.back}
+    ${this.timer}
+    ${this.lives}
   </header>`;
   }
 
-  warning() {
+  static warning() {
     return `<div style="position: fixed; top: 30%; background-color: red; z-index: 101;
 left: 50%; transform: translateX(-50%);">
 <h2>Сбросить всё?</h2>
@@ -30,19 +32,11 @@ left: 50%; transform: translateX(-50%);">
 </div>`;
   }
 
-  header() {
-    let headerContent = [];
-    headerContent.push(this.back);
-    headerContent.push(this.timer);
-    headerContent.push(this.lives);
-    return headerContent;
-  }
-
   bind() {
     this.actionElement = this.element.querySelector(`.back`);
     this.actionElement.addEventListener(`click`, () => {
       let fragment = document.createElement(`div`);
-      fragment.innerHTML = this.warning();
+      fragment.innerHTML = HeaderView.warning();
       this.element.appendChild(fragment);
       fragment.addEventListener(`click`, (evt) => {
         let reset = this.element.querySelector(`.reset`);

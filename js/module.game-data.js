@@ -1,9 +1,22 @@
 const gameData = {};
 
+const initData = {
+  LIVES: 3,
+  TIMER: 30,
+  DIE: 0,
+  START_SCREEN: 0
+};
+
 const answerPrices = {
   CORRECT: 100,
   FAST: 50,
   SLOW: -50,
+  LIVES: 50
+};
+
+const timeToAnswer = {
+  SLOW: 10,
+  NORMAL: 20,
 };
 
 const gameTypes = {
@@ -28,7 +41,9 @@ gameData.gameType = gameTypes;
 gameData.imageTypes = imageTypes;
 gameData.answerTypes = answerTypes;
 gameData.answerPrices = answerPrices;
+gameData.initData = initData;
 gameData.gameOldStats = [];
+gameData.timeToAnswer = timeToAnswer;
 gameData.gameScreensData = [
   {
     gameType: gameTypes.TWO_IMAGES,
