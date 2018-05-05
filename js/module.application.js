@@ -6,7 +6,6 @@ import StatsView from "./templates/template.stats";
 import GameModel from './module.game-model';
 import Loader from './module.loader';
 import ErrorView from './templates/template.error';
-import LoadingView from './templates/template.loading';
 
 const main = document.querySelector(`.central`);
 
@@ -22,15 +21,10 @@ export default class Application {
   }
 
   static start() {
-    const loadingView = new LoadingView();
-    changeView(loadingView.element);
-    Loader.loadData().then(() => this.showIntro()).catch(this.showError);
-  }
-
-  static showIntro() {
     const introView = new IntroView();
-    introView.onShowGreeting = () => this.showGreeting();
     changeView(introView.element);
+    Loader.loadData().catch(this.showError);
+    introView.onShowGreeting = () => this.showGreeting();
   }
 
   static showGreeting() {
@@ -48,7 +42,7 @@ export default class Application {
     const model = new GameModel(name);
     const gameView = new GameScreen(model);
     gameView.onShowStats = (data) => {
-      Loader.loadStats(name);
+      Loader.loadStats(name).catch(() => {});
       Loader.saveStats(data).then(() => this.showResults(data)).catch(this.showError);
     };
     gameView.onShowGreeting = () => this.showGreeting();
