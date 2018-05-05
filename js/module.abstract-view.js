@@ -15,7 +15,7 @@ export default class AbstractView {
     }
     return this._markup;
   }
-  get template() {
+  template() {
 
   }
 

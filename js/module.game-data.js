@@ -1,5 +1,11 @@
 const gameData = {};
 
+const answerPrices = {
+  CORRECT: 100,
+  FAST: 50,
+  SLOW: -50,
+};
+
 const gameTypes = {
   TWO_IMAGES: `two-of-two`,
   ONE_IMAGE: `tinder-like`,
@@ -21,6 +27,7 @@ const answerTypes = {
 gameData.gameType = gameTypes;
 gameData.imageTypes = imageTypes;
 gameData.answerTypes = answerTypes;
+gameData.answerPrices = answerPrices;
 gameData.gameOldStats = [];
 gameData.gameScreensData = [
   {

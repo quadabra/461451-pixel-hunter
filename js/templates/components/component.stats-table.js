@@ -1,3 +1,4 @@
+import gameData from '../../module.game-data';
 import statsBar from './component.statsbar';
 
 export default (data, number) => (`
@@ -14,7 +15,7 @@ export default (data, number) => (`
   <tr>
   <td></td>
   <td class="result__extra">Бонус за скорость:</td>
-<td class="result__extra">${data.speedPoints / 50}&nbsp;<span class="stats__result stats__result--fast"></span></td>
+<td class="result__extra">${data.speedPoints / gameData.answerPrices.FAST}&nbsp;<span class="stats__result stats__result--fast"></span></td>
 <td class="result__points">×&nbsp;50</td>
 <td class="result__total">${data.speedPoints}</td>
   </tr>
@@ -28,9 +29,9 @@ export default (data, number) => (`
   <tr>
   <td></td>
   <td class="result__extra">Штраф за медлительность:</td>
-<td class="result__extra">${data.slowPoints / 50}&nbsp;<span class="stats__result stats__result--slow"></span></td>
+<td class="result__extra">${data.slowPoints / gameData.answerPrices.SLOW}&nbsp;<span class="stats__result stats__result--slow"></span></td>
 <td class="result__points">×&nbsp;50</td>
-<td class="result__total">-&nbsp;${data.slowPoints}</td>
+<td class="result__total">${data.slowPoints}</td>
 </tr>
 <tr>
 <td colspan="5" class="result__total  result__total--final">${data.totalPoints}</td>

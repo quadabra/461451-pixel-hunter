@@ -13,15 +13,15 @@ export default class GameModel {
     this._answers.forEach((it) => {
       switch (it) {
         case answerTypes.CORRECT:
-          this._result.answerPoints += 100;
+          this._result.answerPoints += gameData.answerPrices.CORRECT;
           break;
         case answerTypes.FAST:
-          this._result.answerPoints += 100;
-          this._result.speedPoints += 50;
+          this._result.answerPoints += gameData.answerPrices.CORRECT;
+          this._result.speedPoints += gameData.answerPrices.FAST;
           break;
         case answerTypes.SLOW:
-          this._result.answerPoints += 100;
-          this._result.slowPoints += 50;
+          this._result.answerPoints += gameData.answerPrices.CORRECT;
+          this._result.slowPoints += gameData.answerPrices.SLOW;
           break;
         case answerTypes.WRONG:
           this._result.answerPoints += 0;
@@ -32,7 +32,7 @@ export default class GameModel {
     });
     this._result.lives = (this.lives >= 0) ? (this.lives) : (0);
     this._result.livesPoints = this._result.lives * 50;
-    this._result.totalPoints = this._result.answerPoints + this._result.livesPoints + this._result.speedPoints - this._result.slowPoints;
+    this._result.totalPoints = this._result.answerPoints + this._result.livesPoints + this._result.speedPoints + this._result.slowPoints;
     this._result.name = this.user;
     this._result.stats = this.statsBarData();
     this._result.date = new Date();

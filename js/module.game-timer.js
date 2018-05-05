@@ -1,3 +1,10 @@
+const timerBlinkColors = {
+  red: `color: red`,
+  black: `color: black`
+};
+
+const WARNING_TIME = 5;
+
 export default class Timer {
   constructor() {
     this.currentTime = null;
@@ -21,6 +28,7 @@ export default class Timer {
     const _tick = () => {
       this.container.innerHTML = this.currentTime;
       this.currentTime--;
+      this.container.style = (this.currentTime < WARNING_TIME && !(this.currentTime % 2)) ? timerBlinkColors.red : timerBlinkColors.black;
 
       if (this.currentTime <= 0) {
         if (this.callback !== null) {
