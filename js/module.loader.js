@@ -12,11 +12,11 @@ const status = (response) => {
 
 const convertIncoming = function (data) {
   return data.map((it) => {
-    let screen = {};
+    const screen = {};
     screen.gameType = it.type;
     screen.text = it.question;
     screen.tasks = it.answers.map((item, i) =>{
-      let task = {};
+      const task = {};
       task.image = item.image.url;
       task.name = `question` + (i + 1);
       task.alt = `Option ` + (i + 1);
@@ -60,6 +60,7 @@ export default class Loader {
     return fetch(`https://es.dump.academy/pixel-hunter/stats/:${APP_ID}-:${name}`).
         then(status).
         then(toJSON).
-        then(saveStatsData);
+        then(saveStatsData).
+        catch(() => {console.log(`новый игрок`)});
   }
 }

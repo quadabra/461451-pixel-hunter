@@ -42,7 +42,7 @@ export default class Application {
     const model = new GameModel(name);
     const gameView = new GameScreen(model);
     gameView.onShowStats = (data) => {
-      Loader.loadStats(name).catch(() => {});
+      Loader.loadStats(name);
       Loader.saveStats(data).then(() => this.showResults(data)).catch(this.showError);
     };
     gameView.onShowGreeting = () => this.showGreeting();

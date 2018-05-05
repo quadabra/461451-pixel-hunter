@@ -39,7 +39,7 @@ export default class GameModel {
   }
 
   statsBarData() {
-    let answers = new Array(gameData.gameScreensData.length);
+    const answers = new Array(gameData.gameScreensData.length);
     for (let i = 0; i < answers.length; i++) {
       answers[i] = (this._answers[i]) ? this._answers[i] : `unknown`;
     }

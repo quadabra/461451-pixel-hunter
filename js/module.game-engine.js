@@ -48,7 +48,7 @@ export default class GameScreen {
   thirdGameTypeCallback(answer) {
     this.timer.stop();
     const time = this.timer.getTime();
-    let tasks = this.task.tasks;
+    const tasks = this.task.tasks;
     let photos = 0;
     let paintings = 0;
     tasks.forEach((it) => {

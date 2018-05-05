@@ -35,12 +35,12 @@ left: 50%; transform: translateX(-50%);">
   bind() {
     this.actionElement = this.element.querySelector(`.back`);
     this.actionElement.addEventListener(`click`, () => {
-      let fragment = document.createElement(`div`);
+      const fragment = document.createElement(`div`);
       fragment.innerHTML = HeaderView.warning();
       this.element.appendChild(fragment);
       fragment.addEventListener(`click`, (evt) => {
-        let reset = this.element.querySelector(`.reset`);
-        let cancel = this.element.querySelector(`.cancel`);
+        const reset = this.element.querySelector(`.reset`);
+        const cancel = this.element.querySelector(`.cancel`);
         if (evt.target === reset) {
           this.callback();
         } else if (evt.target === cancel) {

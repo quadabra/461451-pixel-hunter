@@ -6,7 +6,7 @@ export default class AbstractView {
   }
   get element() {
     if (!this._markup) {
-      let fragment = this.render();
+      const fragment = this.render();
       this._markup = document.createElement(`div`);
       while (fragment.childNodes.length) {
         this._markup.appendChild(fragment.childNodes[0]);
@@ -20,7 +20,7 @@ export default class AbstractView {
   }
 
   render() {
-    let container = document.createElement(`div`);
+    const container = document.createElement(`div`);
     container.innerHTML = this.template();
     return container;
   }

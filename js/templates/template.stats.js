@@ -16,7 +16,7 @@ export default class StatsView extends AbstractView {
     <header class="header">
     ${backView()}
     </header>
-    ${this.data.map((it, i) => statsTable(it, i + 1))}
+    ${this.data.map((it, i) => statsTable(it, i + 1)).join(``)}
   </div>`;
   }
 
