@@ -61,6 +61,6 @@ export default class Loader {
         then(status).
         then(toJSON).
         then(saveStatsData).
-        catch(() => {console.log(`новый игрок`)});
+        catch(() => {});
   }
 }
