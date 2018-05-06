@@ -42,8 +42,10 @@ export default class Application {
     const model = new GameModel(name);
     const gameView = new GameScreen(model);
     gameView.onShowStats = (data) => {
-      Loader.saveStats(data).then(() => this.showResults(data)).catch(this.showError);
-      Loader.loadStats(name);
+      Loader.saveStats(data).
+      then(Loader.loadStats(name)).
+      then(() => this.showResults(data)).
+      catch(this.showError);
     };
     gameView.onShowGreeting = () => this.showGreeting();
     changeView(gameView.startLevel());
