@@ -10,10 +10,6 @@ const status = (response) => {
   }
 };
 
-const newPlayer = function (error) {
- console.log(`Пользователь в базе не найден. ` + error.message + ` Создан новый польщователь`)
-};
-
 const convertIncoming = function (data) {
   return data.map((it) => {
     const screen = {};
@@ -65,6 +61,6 @@ export default class Loader {
         then(status).
         then(toJSON).
         then(saveStatsData).
-        catch(newPlayer);
+        catch(() => {});
   }
 }
