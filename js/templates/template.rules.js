@@ -30,7 +30,10 @@ export default class RulesView extends AbstractView {
       this.submit.disabled = (!evt.target.value);
     });
 
-    this.submit.addEventListener(`click`, () => this.onStartGame(this.input.value));
+    this.submit.addEventListener(`click`, (evt) => {
+      evt.preventDefault();
+      this.onStartGame(this.input.value)
+    });
     this.back = this.element.querySelector(`.back`);
     this.back.addEventListener(`click`, () => this.onShowGreeting());
     super.bind();
