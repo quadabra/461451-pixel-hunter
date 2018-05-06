@@ -19,11 +19,11 @@ export default class FirstGameType extends AbstractView {
   }
   bind() {
     this.actionElement = this.element.querySelector(`.game__content`);
-    this.actionElement.addEventListener(`click`, () => {
-      const answer0 = document.forms[0].elements.question1.value;
-      const answer1 = document.forms[0].elements.question2.value;
+    this.actionElement.addEventListener(`change`, (evt) => {
+      const answer0 = [...evt.target.form.elements.question1].find((control) => control.checked);
+      const answer1 = [...evt.target.form.elements.question2].find((control) => control.checked);
       if (answer0 && answer1) {
-        this.onAnswer(answer0, answer1);
+        this.onAnswer(answer0.value, answer1.value);
       }
     });
     super.bind();

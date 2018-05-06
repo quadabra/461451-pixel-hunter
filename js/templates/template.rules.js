@@ -32,7 +32,7 @@ export default class RulesView extends AbstractView {
 
     this.submit.addEventListener(`click`, (evt) => {
       evt.preventDefault();
-      this.onStartGame(this.input.value)
+      this.onStartGame(this.input.value);
     });
     this.back = this.element.querySelector(`.back`);
     this.back.addEventListener(`click`, () => this.onShowGreeting());
